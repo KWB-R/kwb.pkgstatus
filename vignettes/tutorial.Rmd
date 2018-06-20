@@ -1,0 +1,78 @@
+---
+title: "Tutorial"
+author: "Michael Rustler"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# 1 Install R package
+
+```{r, eval = FALSE}
+installed_packages <- rownames(installed.packages())
+
+if(!"devtools" %in% installed_packages) {
+  install.packages("devtools", repos = "https://cloud.r-project.org")
+}
+if(!"kwb.pkgstatus" %in% installed_packages) {
+  devtools::install_github("KWB-R/kwb.pkgstatus")
+}
+
+```
+
+# 2 How to check KWB R package status 
+
+## 2.1 Parameterise
+
+Define path to `secrets.csv` and define repositories for the Github organisation
+`KWB-R` which are not R packages and save them in a variable called 
+`non_r_packages`. Then call the 
+
+```{r}
+secrets_csv <- "secrets.csv"
+
+non_r_packages = c("kwb-r.github.io",
+  "fakin.blog", "fakin.doc", "HydroServerLite")
+
+```
+
+## 2.2 Get dataframe of R package status information
+
+Run the function `kwb.pkgstatus::prepare_status_rpackages` with parameters 
+defined above:
+
+```{r}
+pkgstatus_df <- kwb.pkgstatus::prepare_status_rpackages(secrets_csv, 
+                                                        non_r_packages)
+
+head(pkgstatus_df)
+```
+
+## 2.3 Create R package status report
+
+Run the function `kwb.pkgstatus::create_report_rpackages` with parameters 
+defined above:
+
+
+```{r eval = FALSE}
+
+temp_dir <- temp()
+
+cat(sprintf("Save report in temp folder:\n", temp_dir))
+kwb.pkgstatus::create_report_rpackages(secrets_csv, 
+                                       non_r_packages, 
+                                       export_dir = temp_dir)
+)
+
+```
+

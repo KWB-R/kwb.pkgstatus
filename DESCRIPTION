@@ -1,0 +1,29 @@
+Package: kwb.pkgstatus
+Version: 0.1.0.9000
+Title: R package for checking KWB package status
+Description: R package for checking KWB package status (e.g. generating 
+            https://kwb-r.github.io/status).
+Authors@R: c(person("Michael", "Rustler", , "michael.rustler@kompetenz-wasser.de",
+           role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0647-7726")),
+           person("Kompetenzzentrum Wasser Berlin gGmbH (KWB)", role = c("cph")))
+License: MIT + file LICENSE
+Imports:
+  data.table,
+  dplyr,
+  gh,
+  httr,
+  jsonlite,
+  lubridate,
+  magrittr,
+  stringr
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+URL: https://github.com/KWB-R/kwb.pkgstatus
+BugReports: https://github.com/KWB-R/kwb.pkgstatus/issues
+Suggests: 
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.0.1
