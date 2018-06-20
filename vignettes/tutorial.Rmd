@@ -51,7 +51,7 @@ non_r_packages = c("kwb-r.github.io",
 Run the function `kwb.pkgstatus::prepare_status_rpackages` with parameters 
 defined above:
 
-```{r}
+```{r eval = FALSE}
 pkgstatus_df <- kwb.pkgstatus::prepare_status_rpackages(secrets_csv, 
                                                         non_r_packages)
 
