@@ -2,6 +2,8 @@ language: r
 r:
 - oldrel
 - release
+cache:
+  packages: yes
 sudo: required
 r_packages:
 - devtools
