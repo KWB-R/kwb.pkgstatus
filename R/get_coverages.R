@@ -44,6 +44,7 @@ get_coverage <- function(repo_full_name,
 #' @param dbg debug if TRUE (default: TRUE) 
 #' @return data.frame with coverage percent and url for all provided 
 #' repo_full_names
+#' @export
 get_coverages <- function (repo_full_names, 
                            codecov_token = getOption("codecov_token"), 
                            dbg = TRUE) {

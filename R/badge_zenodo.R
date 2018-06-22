@@ -3,6 +3,7 @@
 #' @importFrom dplyr tbl_df
 #' @importFrom data.table rbindlist
 #' @return a tibble of available Zenodo data 
+#' @export
 process_hitter_response <- function (response) 
 {
   res <- lapply(response, function(s) data.frame(t(unlist(s))))
@@ -31,6 +32,7 @@ zen_collections <- function (access_token = getOption("zenodo_token"))
 #' getOption("zenodo_token")) 
 #' @importFrom stringr str_detect
 #' @return zenodo badges for provided repo_full_names  
+#' @export
 badge_zenodo <- function(repo_full_names, 
                          zenodo_token = getOption("zenodo_token")) {
   
