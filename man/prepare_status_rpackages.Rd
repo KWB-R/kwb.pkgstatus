@@ -5,14 +5,14 @@
 \title{prepare_status_rpackages}
 \usage{
 prepare_status_rpackages(secrets_csv, non_r_packages = c("kwb-r.github.io",
-  "fakin.blog", "fakin.doc", "HydroServerLite"))
+  "fakin.blog", "fakin.doc", "HydroServerLite", "GeoSalz"))
 }
 \arguments{
 \item{secrets_csv}{path to "secrets.csv" file}
 
 \item{non_r_packages}{a character vector with repositories in KWB-R group that
 are not R packages c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
-"HydroServerLite")}
+"HydroServerLite", "GeoSalz")}
 }
 \value{
 data.frame with R package status information
