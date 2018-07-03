@@ -5,7 +5,8 @@
 \title{Create R packages status report#'}
 \usage{
 create_report_rpackages(secrets_csv, non_r_packages = c("kwb-r.github.io",
-  "fakin.blog", "fakin.doc", "HydroServerLite", "GeoSalz"), export_dir = ".",
+  "fakin.blog", "fakin.doc", "HydroServerLite", "GeoSalz", "FolderRights"),
+  export_dir = ".",
   input_rmd = system.file("extdata/reports/status_report.Rmd", package =
   "kwb.pkgstatus"))
 }
@@ -14,7 +15,7 @@ create_report_rpackages(secrets_csv, non_r_packages = c("kwb-r.github.io",
 
 \item{non_r_packages}{a character vector with repositories in KWB-R group that
 are not R packages c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
-"HydroServerLite", "GeoSalz")}
+"HydroServerLite", "GeoSalz", "FolderRights")}
 
 \item{export_dir}{report export directory (default: ".")}
 
