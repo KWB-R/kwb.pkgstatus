@@ -120,8 +120,8 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>create_report_rpackages</span>(<span class='no'>secrets_csv</span>, <span class='kw'>non_r_packages</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"kwb-r.github.io"</span>,
-  <span class='st'>"fakin.blog"</span>, <span class='st'>"fakin.doc"</span>, <span class='st'>"HydroServerLite"</span>, <span class='st'>"GeoSalz"</span>), <span class='kw'>export_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+    <pre class="usage"><span class='fu'>create_report_rpackages</span>(<span class='no'>secrets_csv</span>, <span class='kw'>non_r_packages</span> <span class='kw'>=</span> <span class='fu'><a href='get_non_r_packages.html'>get_non_r_packages</a></span>(),
+  <span class='kw'>export_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
   <span class='kw'>input_rmd</span> <span class='kw'>=</span> <span class='fu'>system.file</span>(<span class='st'>"extdata/reports/status_report.Rmd"</span>, <span class='kw'>package</span> <span class='kw'>=</span>
   <span class='st'>"kwb.pkgstatus"</span>))</pre>
     
@@ -135,8 +135,7 @@
     <tr>
       <th>non_r_packages</th>
       <td><p>a character vector with repositories in KWB-R group that
-are not R packages c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
-"HydroServerLite", "GeoSalz")</p></td>
+are not R packages (default: <code>get_non_r_packages</code>)</p></td>
     </tr>
     <tr>
       <th>export_dir</th>

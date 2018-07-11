@@ -1,15 +1,13 @@
 #' prepare_status_rpackages
 #' @param secrets_csv path to "secrets.csv" file
 #' @param non_r_packages a character vector with repositories in KWB-R group that
-#' are not R packages c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
-#' "HydroServerLite", "GeoSalz", "FolderRights")
+#' are not R packages (default: \code{get_non_r_packages})
 #' @importFrom dplyr filter_ left_join
 #' @importFrom utils read.csv
 #' @return data.frame with R package status information
 #' @export
 prepare_status_rpackages <- function (secrets_csv, 
-    non_r_packages = c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
-   "HydroServerLite", "GeoSalz", "FolderRights")) {
+    non_r_packages = get_non_r_packages()) {
   
   
   ### Need to check Hadley`s vignette for safely managing access tokens:

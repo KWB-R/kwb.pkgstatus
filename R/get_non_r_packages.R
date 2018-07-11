@@ -1,0 +1,12 @@
+#' Helper function: get_non_r_packages 
+#'
+#' @return returns vector with KWB-R repos on Github, which are not R packages
+#' @export
+#' @examples
+#' get_non_r_packages()
+#' 
+get_non_r_packages <- function() {
+
+  c("kwb-r.github.io", "fakin.blog", "fakin.doc", 
+   "HydroServerLite", "GeoSalz", "FolderRights", "apps")
+}
