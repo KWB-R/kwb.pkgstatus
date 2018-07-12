@@ -31,7 +31,9 @@ get_gitlab_repos <- function(group = "KWB-R",
 get_github_repos <- function (group = "KWB-R", 
                               github_token = getOption("github_token")) {
   
-  gh_repos <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos", group), 
+  
+  gh_repos <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?per_page=100", 
+                                        group), 
                      .token =  github_token)
   
   for (repo_ind in seq_along(gh_repos)) {
