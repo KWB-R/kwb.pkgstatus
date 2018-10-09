@@ -4,8 +4,8 @@
 \alias{create_report_rpackages}
 \title{Create R packages status report#'}
 \usage{
-create_report_rpackages(secrets_csv, non_r_packages = get_non_r_packages(),
-  export_dir = ".",
+create_report_rpackages(secrets_csv,
+  non_r_packages = get_non_r_packages(), export_dir = ".",
   input_rmd = system.file("extdata/reports/status_report.Rmd", package =
   "kwb.pkgstatus"))
 }

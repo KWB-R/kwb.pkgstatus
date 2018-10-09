@@ -1,5 +1,7 @@
 # kwb.pkgstatus 0.1.0.9000
 
+* Add OpenCpu deployment (https://kwb-r.ocpu.io)   
+
 * Fixed `get_github_repos()` to work for more than 30 (public) repos for 
 [KWB-R](https://github.com/KWB-R) group (#1)
 

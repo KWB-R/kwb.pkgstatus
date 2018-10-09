@@ -4,7 +4,8 @@
 \alias{get_gitlab_repos}
 \title{get_gitlab_repos}
 \usage{
-get_gitlab_repos(group = "KWB-R", gitlab_token = getOption("gitlab_token"))
+get_gitlab_repos(group = "KWB-R",
+  gitlab_token = getOption("gitlab_token"))
 }
 \arguments{
 \item{group}{username or organisation for Gitlab (default: "KWB-R")}

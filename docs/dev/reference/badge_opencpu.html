@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>get_github_repos — get_github_repos • kwb.pkgstatus</title>
+<title>badge_opencpu — badge_opencpu • kwb.pkgstatus</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="get_github_repos — get_github_repos" />
+<meta property="og:title" content="badge_opencpu — badge_opencpu" />
 
-<meta property="og:description" content="get_github_repos" />
+<meta property="og:description" content="badge_opencpu" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -112,38 +112,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>get_github_repos</h1>
-    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.pkgstatus/blob/master/R/get_repo_infos.R'><code>R/get_repo_infos.R</code></a></small>
-    <div class="hidden name"><code>get_github_repos.Rd</code></div>
+    <h1>badge_opencpu</h1>
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.pkgstatus/blob/master/R/badge_opencpu.R'><code>R/badge_opencpu.R</code></a></small>
+    <div class="hidden name"><code>badge_opencpu.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>get_github_repos</p>
+    <p>badge_opencpu</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_github_repos</span>(<span class='kw'>group</span> <span class='kw'>=</span> <span class='st'>"KWB-R"</span>,
-  <span class='kw'>github_token</span> <span class='kw'>=</span> <span class='fu'>getOption</span>(<span class='st'>"github_token"</span>))</pre>
+    <pre class="usage"><span class='fu'>badge_opencpu</span>(<span class='no'>url</span>,
+  <span class='kw'>logo_path</span> <span class='kw'>=</span> <span class='st'>"https://avatars2.githubusercontent.com/u/28672890?s=200&amp;v=4"</span>,
+  <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>24</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>group</th>
-      <td><p>username or organisation for Github (default: "KWB-R")</p></td>
+      <th>url</th>
+      <td><p>url to repository on Gitlab</p></td>
     </tr>
     <tr>
-      <th>github_token</th>
-      <td><p>github access token (default: getOption("github_token"))</p></td>
+      <th>logo_path</th>
+      <td><p>path to OpenCpu logo (default: 
+"https://avatars2.githubusercontent.com/u/28672890?s=200&amp;v=4")</p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>size of logo in pixels (default: 24)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame with for all repositories of the user/organisation defined 
-in parameter group (private repos will only be accessible if the token is 
-configured to allow that)</p>
+    <p>OpenCpu logo in html with path to R package on OpenCpu</p>
     
 
   </div>

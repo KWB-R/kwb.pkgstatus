@@ -4,7 +4,8 @@
 \alias{prepare_status_rpackages}
 \title{prepare_status_rpackages}
 \usage{
-prepare_status_rpackages(secrets_csv, non_r_packages = get_non_r_packages())
+prepare_status_rpackages(secrets_csv,
+  non_r_packages = get_non_r_packages())
 }
 \arguments{
 \item{secrets_csv}{path to "secrets.csv" file}

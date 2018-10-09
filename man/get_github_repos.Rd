@@ -4,7 +4,8 @@
 \alias{get_github_repos}
 \title{get_github_repos}
 \usage{
-get_github_repos(group = "KWB-R", github_token = getOption("github_token"))
+get_github_repos(group = "KWB-R",
+  github_token = getOption("github_token"))
 }
 \arguments{
 \item{group}{username or organisation for Github (default: "KWB-R")}

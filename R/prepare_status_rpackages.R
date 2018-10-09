@@ -42,8 +42,11 @@ stringsAsFactors = FALSE)
 dat <- cbind(repo_infos, meta_info)
   
 check_gitlab <- check_gitlab_backup()
+deployed_on_opencpu <- check_opencpu_deploy()
   
-dat <- dat %>% dplyr::left_join(y = check_gitlab) 
+dat <- dat %>% 
+        dplyr::left_join(y = check_gitlab) %>% 
+        dplyr::left_join(y = deployed_on_opencpu)
   
 return(dat)  
 }

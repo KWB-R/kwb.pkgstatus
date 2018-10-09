@@ -8,6 +8,13 @@
 
 R package for checking KWB package status (e.g. generating https://kwb-r.github.io/status)
 
+## Installation
+
+```r
+#install.packages("devtools", repos = "https://cloud.r-project.org")
+devtools::install_github("KWB-R/kwb.pkgstatus")
+```
+
 ## Documentation
 
 Release: [https:://kwb-r.github.io/kwb.pkgstatus](https:://kwb-r.github.io/kwb.pkgstatus)
