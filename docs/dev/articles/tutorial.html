@@ -83,7 +83,7 @@
       <h1>Tutorial</h1>
                         <h4 class="author">Michael Rustler</h4>
             
-            <h4 class="date">2018-10-09</h4>
+            <h4 class="date">2018-10-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/KWB-R/kwb.pkgstatus/blob/master/vignettes/tutorial.Rmd"><code>vignettes/tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>tutorial.Rmd</code></div>
@@ -113,8 +113,7 @@
 <p>Define path to <code>secrets.csv</code> and define repositories for the Github organisation <code>KWB-R</code> which are not R packages and save them in a variable called <code>non_r_packages</code>. Then call the</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">secrets_csv &lt;-<span class="st"> "secrets.csv"</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">non_r_packages =<span class="st"> </span><span class="kw">c</span>(<span class="st">"kwb-r.github.io"</span>,</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">  <span class="st">"fakin.blog"</span>, <span class="st">"fakin.doc"</span>, <span class="st">"HydroServerLite"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3">non_r_packages &lt;-<span class="st"> </span>kwb.pkgstatus<span class="op">::</span><span class="kw">get_non_r_packages</span>()</a></code></pre></div>
 </div>
 <div id="get-dataframe-of-r-package-status-information" class="section level2">
 <h2 class="hasAnchor">

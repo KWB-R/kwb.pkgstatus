@@ -41,8 +41,7 @@ Define path to `secrets.csv` and define repositories for the Github organisation
 ```{r}
 secrets_csv <- "secrets.csv"
 
-non_r_packages = c("kwb-r.github.io",
-  "fakin.blog", "fakin.doc", "HydroServerLite")
+non_r_packages <- kwb.pkgstatus::get_non_r_packages()
 
 ```
 
