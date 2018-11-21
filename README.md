@@ -17,6 +17,6 @@ devtools::install_github("KWB-R/kwb.pkgstatus")
 
 ## Documentation
 
-Release: [https:://kwb-r.github.io/kwb.pkgstatus](https:://kwb-r.github.io/kwb.pkgstatus)
+Release: [https://kwb-r.github.io/kwb.pkgstatus](https://kwb-r.github.io/kwb.pkgstatus)
 
-Development: [https:://kwb-r.github.io/kwb.pkgstatus/dev](https:://kwb-r.github.io/kwb.pkgstatus/dev)
+Development: [https://kwb-r.github.io/kwb.pkgstatus/dev](https://kwb-r.github.io/kwb.pkgstatus/dev)
