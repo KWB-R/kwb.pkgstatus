@@ -24,6 +24,7 @@ BugReports: https://github.com/KWB-R/kwb.pkgstatus/issues
 Suggests: 
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 VignetteBuilder: knitr
 RoxygenNote: 6.1.0
