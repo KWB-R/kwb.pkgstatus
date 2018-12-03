@@ -11,8 +11,8 @@ R package for checking KWB package status (e.g. generating https://kwb-r.github.
 ## Installation
 
 ```r
-#install.packages("devtools", repos = "https://cloud.r-project.org")
-devtools::install_github("KWB-R/kwb.pkgstatus")
+#install.packages("remotes", repos = "https://cloud.r-project.org")
+remotes::install_github("KWB-R/kwb.pkgstatus")
 ```
 
 ## Documentation
