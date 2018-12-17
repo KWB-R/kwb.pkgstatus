@@ -28,3 +28,6 @@ rsconnect/
 .Rproj.user
 inst/doc
 secrets\.csv$
+
+# and deploys the website to "gh-pages" branch
+docs/.*
