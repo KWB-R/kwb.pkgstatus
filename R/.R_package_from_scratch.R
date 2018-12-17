@@ -14,7 +14,7 @@ pkg <- list(name = "kwb.pkgstatus",
 
 kwb.pkgbuild::use_pkg(author, 
                      pkg, 
-                     version = "0.1.0.9000",
+                     version = "0.0.0.9000",
                      stage = "experimental")
 
 

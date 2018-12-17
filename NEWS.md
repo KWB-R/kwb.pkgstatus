@@ -1,4 +1,4 @@
-# kwb.pkgstatus 0.1.0.9000
+# kwb.pkgstatus 0.0.0.9000
 
 * Add OpenCpu deployment (https://kwb-r.ocpu.io)   
 
