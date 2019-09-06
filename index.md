@@ -9,7 +9,7 @@ R package for checking KWB package status (e.g. generating https://kwb-r.github.
 
 ## Installation
 
-```{r eval = FALSE}
+```r
 #install.packages("remotes", repos = "https://cloud.r-project.org")
 remotes::install_github("KWB-R/kwb.pkgstatus")
 ```
