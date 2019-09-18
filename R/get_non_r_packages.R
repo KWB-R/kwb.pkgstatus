@@ -8,6 +8,6 @@
 get_non_r_packages <- function() {
 
   c("kwb-r.github.io", "fakin", "fakin.blog", "fakin.doc", "fakin.scripts",
-   "HydroServerLite", "GeoSalz", "FolderRights", "apps",
+   "HydroServerLite", "GeoSalz", "FolderRights", "apps", "r-training",
    "support", "maxflow", "pubs", "status", "useR-2019")
 }
