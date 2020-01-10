@@ -1,5 +1,5 @@
 Package: kwb.pkgstatus
-Version: 0.0.0.9000
+Version: 0.1.0
 Title: R package for checking KWB package status
 Description: R package for checking KWB package status (e.g. generating 
             https://kwb-r.github.io/status).
