@@ -93,7 +93,7 @@
       <h1 data-toc-skip>Tutorial</h1>
                         <h4 class="author">Michael Rustler</h4>
             
-            <h4 class="date">2020-07-09</h4>
+            <h4 class="date">2020-10-01</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/KWB-R/kwb.pkgstatus/blob/master/vignettes/tutorial.Rmd"><code>vignettes/tutorial.Rmd</code></a></small>
       <div class="hidden name"><code>tutorial.Rmd</code></div>
@@ -105,14 +105,15 @@
 <div id="install-r-package" class="section level1">
 <h1 class="hasAnchor">
 <a href="#install-r-package" class="anchor"></a>1 Install R package</h1>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="no">installed_packages</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span>(<span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span>())
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="va">installed_packages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="kw">if</span>(!<span class="st">"devtools"</span> <span class="kw">%in%</span> <span class="no">installed_packages</span>) {
-  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="kw">repos</span> <span class="kw">=</span> <span class="st">"https://cloud.r-project.org"</span>)
-}
-<span class="kw">if</span>(!<span class="st">"kwb.pkgstatus"</span> <span class="kw">%in%</span> <span class="no">installed_packages</span>) {
-  <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu">install_github</span>(<span class="st">"KWB-R/kwb.pkgstatus"</span>)
-}</pre></body></html></div>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"devtools"</span> <span class="op">%in%</span> <span class="va">installed_packages</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span>, repos <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span>
+<span class="op">}</span>
+<span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="st">"kwb.pkgstatus"</span> <span class="op">%in%</span> <span class="va">installed_packages</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"KWB-R/kwb.pkgstatus"</span><span class="op">)</span>
+<span class="op">}</span></pre></div>
 </div>
 <div id="how-to-check-kwb-r-package-status" class="section level1">
 <h1 class="hasAnchor">
@@ -121,31 +122,33 @@
 <h2 class="hasAnchor">
 <a href="#parameterise" class="anchor"></a>2.1 Parameterise</h2>
 <p>Define path to <code>secrets.csv</code> and define repositories for the Github organisation <code>KWB-R</code> which are not R packages and save them in a variable called <code>non_r_packages</code>. Then call the</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">secrets_csv</span> <span class="kw">&lt;-</span> <span class="st">"secrets.csv"</span>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="va">secrets_csv</span> <span class="op">&lt;-</span> <span class="st">"secrets.csv"</span>
 
-<span class="no">non_r_packages</span> <span class="kw">&lt;-</span> <span class="kw pkg">kwb.pkgstatus</span><span class="kw ns">::</span><span class="fu"><a href="../reference/get_non_r_packages.html">get_non_r_packages</a></span>()</pre></body></html></div>
+<span class="va">non_r_packages</span> <span class="op">&lt;-</span> <span class="fu">kwb.pkgstatus</span><span class="fu">::</span><span class="fu"><a href="../reference/get_non_r_packages.html">get_non_r_packages</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 </div>
 <div id="get-dataframe-of-r-package-status-information" class="section level2">
 <h2 class="hasAnchor">
 <a href="#get-dataframe-of-r-package-status-information" class="anchor"></a>2.2 Get dataframe of R package status information</h2>
 <p>Run the function <code><a href="../reference/prepare_status_rpackages.html">kwb.pkgstatus::prepare_status_rpackages</a></code> with parameters defined above:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">pkgstatus_df</span> <span class="kw">&lt;-</span> <span class="kw pkg">kwb.pkgstatus</span><span class="kw ns">::</span><span class="fu"><a href="../reference/prepare_status_rpackages.html">prepare_status_rpackages</a></span>(<span class="no">secrets_csv</span>,
-                                                        <span class="no">non_r_packages</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="va">pkgstatus_df</span> <span class="op">&lt;-</span> <span class="fu">kwb.pkgstatus</span><span class="fu">::</span><span class="fu"><a href="../reference/prepare_status_rpackages.html">prepare_status_rpackages</a></span><span class="op">(</span><span class="va">secrets_csv</span>, 
+                                                        <span class="va">non_r_packages</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">pkgstatus_df</span>)</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">pkgstatus_df</span><span class="op">)</span></pre></div>
 </div>
 <div id="create-r-package-status-report" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-r-package-status-report" class="anchor"></a>2.3 Create R package status report</h2>
 <p>Run the function <code><a href="../reference/create_report_rpackages.html">kwb.pkgstatus::create_report_rpackages</a></code> with parameters defined above:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r">
-temp_dir &lt;- temp()
-
-cat(sprintf("Save report in temp folder:\n", temp_dir))
-kwb.pkgstatus::create_report_rpackages(secrets_csv, 
-                                       non_r_packages, 
-                                       export_dir = temp_dir)
-)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">temp_dir &lt;-<span class="st"> </span><span class="kw">temp</span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="kw">cat</span>(<span class="kw">sprintf</span>(<span class="st">"Save report in temp folder:</span><span class="ch">\n</span><span class="st">"</span>, temp_dir))</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">kwb.pkgstatus<span class="op">::</span><span class="kw">create_report_rpackages</span>(secrets_csv, </a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">                                       non_r_packages, </a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">                                       <span class="dt">export_dir =</span> temp_dir)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="er">)</span></a></code></pre></div>
 </div>
 </div>
   </div>
@@ -165,7 +168,7 @@ kwb.pkgstatus::create_report_rpackages(secrets_csv,
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
