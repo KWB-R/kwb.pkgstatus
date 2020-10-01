@@ -4,14 +4,19 @@
 \alias{zen_collections}
 \title{Zenodo: get available collections}
 \usage{
-zen_collections(access_token = getOption("zenodo_token"))
+zen_collections(n = 1000, access_token = getOption("zenodo_token"))
 }
 \arguments{
-\item{access_token}{= getOption("zenodo_token")}
+\item{n}{number of zenodo entries ("size") to return per API call (default: 1000)}
+
+\item{access_token}{Zenodo access token (default: getOption("zenodo_token"))}
 }
 \value{
 a tibble of available Zenodo data
 }
 \description{
 Zenodo: get available collections
+}
+\seealso{
+\url{https://developers.zenodo.org/#depositions}
 }

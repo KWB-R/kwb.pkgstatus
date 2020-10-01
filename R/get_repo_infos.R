@@ -174,21 +174,6 @@ badge_travis <- function(repo_full_names) {
 }
 
 
-process_hitter_response <- function (response) 
-{
-  res <- lapply(response, function(s) data.frame(t(unlist(s))))
-  dplyr::tbl_df(data.table::rbindlist(res, fill = TRUE))
-}
-
-zen_collections <- function (access_token = getOption("zenodo_token")) 
-{
-  dir_path <- "https://zenodo.org/api/deposit/depositions"
-  args <- as.list(c(access_token = access_token))
-  results <- httr::GET(dir_path, query = args)
-  request <- httr::content(results)
-  process_hitter_response(request)
-}
-
 
 badge_zenodo <- function(repo_full_names, 
                          zenodo_token = getOption("zenodo_token")) {

@@ -4,8 +4,11 @@
 \alias{get_coverage}
 \title{get_coverage}
 \usage{
-get_coverage(repo_full_name, codecov_token = getOption("codecov_token"),
-  dbg = TRUE)
+get_coverage(
+  repo_full_name,
+  codecov_token = getOption("codecov_token"),
+  dbg = TRUE
+)
 }
 \arguments{
 \item{repo_full_name}{one combination of username/repo (e.g."KWB-R/kwb.db")}

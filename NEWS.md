@@ -1,4 +1,6 @@
-# kwb.pkgstatus 0.0.0.9000
+# kwb.pkgstatus 0.1.0
+
+* `zen_collections()`: add `size` parameter to return more Zenodo entries 
 
 * Add OpenCpu deployment (https://kwb-r.ocpu.io)   
 

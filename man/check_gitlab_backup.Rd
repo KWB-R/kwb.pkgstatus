@@ -4,9 +4,11 @@
 \alias{check_gitlab_backup}
 \title{check_gitlab_backup}
 \usage{
-check_gitlab_backup(group = "KWB-R",
+check_gitlab_backup(
+  group = "KWB-R",
   github_token = getOption("github_token"),
-  gitlab_token = getOption("gitlab_token"))
+  gitlab_token = getOption("gitlab_token")
+)
 }
 \arguments{
 \item{group}{username or organisation for Github/Gitlab (default: "KWB-R")}

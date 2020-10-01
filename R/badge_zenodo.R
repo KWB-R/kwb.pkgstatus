@@ -1,30 +1,3 @@
-#' Helper function for Zenodo
-#' @param response response provided by httr::content()
-#' @importFrom dplyr tbl_df
-#' @importFrom data.table rbindlist
-#' @return a tibble of available Zenodo data 
-#' @export
-process_hitter_response <- function (response) 
-{
-  res <- lapply(response, function(s) data.frame(t(unlist(s))))
-  dplyr::tbl_df(data.table::rbindlist(res, fill = TRUE))
-}
-
-#' Zenodo: get available collections
-#' @param access_token = getOption("zenodo_token")
-#' @importFrom httr content GET
-#' @return a tibble of available Zenodo data 
-#' @export
-
-zen_collections <- function (access_token = getOption("zenodo_token")) 
-{
-  dir_path <- "https://zenodo.org/api/deposit/depositions"
-  args <- as.list(c(access_token = access_token))
-  results <- httr::GET(dir_path, query = args)
-  request <- httr::content(results)
-  process_hitter_response(request)
-}
-
 #' badge_zenodo
 #' @param repo_full_names vector with combination of username/repo (e.g.
 #' c("KWB-R/kwb.utils", "KWB-R/kwb.db"))

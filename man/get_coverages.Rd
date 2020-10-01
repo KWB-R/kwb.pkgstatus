@@ -4,8 +4,11 @@
 \alias{get_coverages}
 \title{get_coverage}
 \usage{
-get_coverages(repo_full_names,
-  codecov_token = getOption("codecov_token"), dbg = TRUE)
+get_coverages(
+  repo_full_names,
+  codecov_token = getOption("codecov_token"),
+  dbg = TRUE
+)
 }
 \arguments{
 \item{repo_full_names}{vector with combination of username/repo (e.g.

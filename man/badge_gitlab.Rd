@@ -4,9 +4,12 @@
 \alias{badge_gitlab}
 \title{badge_gitlab}
 \usage{
-badge_gitlab(url,
+badge_gitlab(
+  url,
   logo_path = paste0("https://gitlab.com/gitlab-com/gitlab-artwork/raw/",
-  "master/logo/logo-square.png"), size = 24)
+    "master/logo/logo-square.png"),
+  size = 24
+)
 }
 \arguments{
 \item{url}{url to repository on Gitlab}

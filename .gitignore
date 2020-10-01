@@ -1,7 +1,6 @@
 # History files
 .Rhistory
 .Rapp.history
-
 # Session Data files
 .RData
 # Example code in package build process
@@ -28,6 +27,6 @@ rsconnect/
 .Rproj.user
 inst/doc
 secrets\.csv$
-
 # and deploys the website to "gh-pages" branch
 docs/.*
+docs
