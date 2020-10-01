@@ -9,13 +9,13 @@
 badge_zenodo <- function(repo_full_names, 
                          zenodo_token = getOption("zenodo_token")) {
   
-  zen_data <- zen_collections(zenodo_token)
+  zen_data <- zen_collections(access_token = zenodo_token)
   
   zen_badge <- rep(NA, length = length(repo_full_names))
   
   for (index in seq_along(repo_full_names)) {
     doi_exists <- stringr::str_detect(
-      string = zen_data$metadata.related_identifiers.identifier, 
+      string = zen_data$metadata.related_identifiers.identifier , 
       pattern = sprintf("https://github.com/%s", 
       repo_full_names[index]))
     

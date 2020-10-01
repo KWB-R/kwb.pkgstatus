@@ -178,7 +178,7 @@ badge_travis <- function(repo_full_names) {
 badge_zenodo <- function(repo_full_names, 
                          zenodo_token = getOption("zenodo_token")) {
   
-  zen_data <- zen_collections(zenodo_token)
+  zen_data <- zen_collections(access_token = zenodo_token)
   
   zen_badge <- rep(NA, length = length(repo_full_names))
   
