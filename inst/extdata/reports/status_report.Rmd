@@ -4,7 +4,7 @@ author: ""
 date: "`r Sys.time()`"
 output: 
   html_document:
-    self_contained: TRUE
+    self_contained: false
 params:
   secrets_csv: NA
   non_r_packages: NA
