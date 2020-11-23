@@ -1,5 +1,5 @@
-[![Appveyor build Status](https://ci.appveyor.com/api/projects/status/github/KWB-R/kwb.pkgstatus?branch=master&svg=true)](https://ci.appveyor.com/project/KWB-R/kwb-pkgstatus/branch/master)
-[![Travis build Status](https://travis-ci.org/KWB-R/kwb.pkgstatus.svg?branch=master)](https://travis-ci.org/KWB-R/kwb.pkgstatus)
+[![R-CMD-check](https://github.com/KWB-R/kwb.pkgstatus/workflows/R-CMD-check/badge.svg)](https://github.com/KWB-R/kwb.pkgstatus/actions?query=workflow%3AR-CMD-check)
+[![pkgdown](https://github.com/KWB-R/kwb.pkgstatus/workflows/pkgdown/badge.svg)](https://github.com/KWB-R/kwb.pkgstatus/actions?query=workflow%3Apkgdown)
 [![codecov](https://codecov.io/github/KWB-R/kwb.pkgstatus/branch/master/graphs/badge.svg)](https://codecov.io/github/KWB-R/kwb.pkgstatus)
 [![Project Status](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/kwb.pkgstatus)]()
