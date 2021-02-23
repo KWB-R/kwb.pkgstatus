@@ -1,4 +1,4 @@
-# [kwb.pkgstatus 0.2.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.2.0)<small>2020-01-10</small>
+# [kwb.pkgstatus 0.2.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.2.0)<small>2021-02-23</small>
 
 * Adapt status overview (use Github Actions workflow!)
 
