@@ -13,6 +13,7 @@ Imports:
   gh,
   httr,
   jsonlite,
+  kwb.pkgbuild,
   lubridate,
   magrittr,
   stringr
@@ -26,5 +27,7 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
+Remotes: 
+    github::kwb-r/kwb.pkgbuild@dev
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1

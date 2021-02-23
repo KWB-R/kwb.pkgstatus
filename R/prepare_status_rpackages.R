@@ -3,6 +3,7 @@
 #' @param non_r_packages a character vector with repositories in KWB-R group that
 #' are not R packages (default: \code{get_non_r_packages})
 #' @importFrom dplyr filter_ left_join
+#' @importFrom kwb.pkgbuild use_badge_ghactions_rcmdcheck use_badge_ghactions_pkgdown
 #' @importFrom utils read.csv
 #' @return data.frame with R package status information
 #' @export
@@ -27,8 +28,12 @@ prepare_status_rpackages <- function (secrets_csv,
 
 meta_info <- data.frame(License_Badge = badge_license(repo_infos$license_key), 
 Tests_Coverage.io = badge_codecov(repo_infos$full_name), 
-Build_Windows = badge_appveyor(repo_infos$full_name),
-Build_Linux = badge_travis(repo_infos$full_name),
+Build_Pkg_Release = kwb.pkgbuild::use_badge_ghactions_rcmdcheck(repo_infos$full_name),
+Build_Pkg_Dev = kwb.pkgbuild::use_badge_ghactions_rcmdcheck(repo_infos$full_name, 
+                                          branch = "dev"),
+Build_Doc_Release = kwb.pkgbuild::use_badge_ghactions_pkgdown(repo_infos$full_name),
+Build_Doc_Dev = kwb.pkgbuild::use_badge_ghactions_pkgdown(repo_infos$full_name, 
+                                                        branch = "dev"),
 ### Avoid issue with CRAN R packages badges
 ### (no problem if PANDOC version >= 2.2.1)
 ### https://github.com/rstudio/rmarkdown/issues/228
