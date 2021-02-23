@@ -1,4 +1,8 @@
-# kwb.pkgstatus 0.1.0
+# [kwb.pkgstatus 0.2.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.2.0)<small>2021-02-23</small>
+
+* Adapt status overview (use Github Actions workflow!)
+
+# [kwb.pkgstatus 0.1.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.1.0)<small>2020-01-10</small>
 
 * `zen_collections()`: add `size` parameter to return more Zenodo entries 
 
