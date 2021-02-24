@@ -47,11 +47,11 @@ prepare_status_rpackages <- function (secrets_csv,
   ### https://cran.r-project.org/web/packages/httr/vignettes/secrets.html
   secrets <- read.csv(secrets_csv, stringsAsFactors = FALSE)
   
-  Sys.env(APPVEYOR_TOKEN = secrets$appveyor_token,
-          CODECOV_TOKEN = secrets$codecov_token,
-          GITHUB_TOKEN = secrets$github_token,
-          GITLAB_TOKEN = secrets$gitlab_token,
-          ZENODO_TOKEN = secrets$zenodo_token
+  Sys.setenv(APPVEYOR_TOKEN = secrets$appveyor_token,
+             CODECOV_TOKEN = secrets$codecov_token,
+             GITHUB_TOKEN = secrets$github_token,
+             GITLAB_TOKEN = secrets$gitlab_token,
+             ZENODO_TOKEN = secrets$zenodo_token
           )
   }
   
