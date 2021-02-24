@@ -5,7 +5,9 @@
 #' @param export_dir report export directory (default: ".")
 #' @param input_rmd default: system.file("extdata/reports/status_report.Rmd", 
 #' package = "kwb.pkgstatus")
-#' @return creates html status report for R packages
+#' @return creates html status report for R packages and returns the absolute 
+#' path to the export directory
+#' @importFrom fs path_abs
 #' @export
 create_report_rpackages <- function (secrets_csv, 
 non_r_packages = get_non_r_packages(),
@@ -21,4 +23,7 @@ non_r_packages = get_non_r_packages(),
                     output_dir = export_dir, 
                     params = list(secrets_csv = secrets_csv,
                                   non_r_packages = non_r_packages))
+  
+  
+  fs::path_abs(export_dir)
 }

@@ -17,6 +17,7 @@ BugReports: https://github.com/KWB-R/kwb.pkgstatus/issues
 Imports:
     data.table,
     dplyr,
+    fs,
     gh,
     httr,
     jsonlite,

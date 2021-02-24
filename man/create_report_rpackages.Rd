@@ -24,7 +24,8 @@ are not R packages (default: \code{get_non_r_packages})}
 package = "kwb.pkgstatus")}
 }
 \value{
-creates html status report for R packages
+creates html status report for R packages and returns the absolute 
+path to the export directory
 }
 \description{
 Create R packages status report#'
