@@ -38,7 +38,7 @@ check_all_tokens_set <- function() {
 #' @importFrom utils read.csv
 #' @return data.frame with R package status information
 #' @export
-prepare_status_rpackages <- function (secrets_csv, 
+prepare_status_rpackages <- function (secrets_csv = NULL, 
     non_r_packages = get_non_r_packages()) {
   
   

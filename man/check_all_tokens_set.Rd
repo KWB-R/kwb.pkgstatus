@@ -12,3 +12,4 @@ TRUE if all tokens are set, FALSE otherwise
 \description{
 Helper function: check if tokens are set
 }
+\keyword{internal}
