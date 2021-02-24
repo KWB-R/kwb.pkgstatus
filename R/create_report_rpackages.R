@@ -10,7 +10,7 @@
 #' package = "kwb.pkgstatus")
 #' @return creates html status report for R packages and returns the absolute 
 #' path to the export directory
-#' @importFrom fs path_abs
+#' @importFrom fs dir_create path_real 
 #' @export
 create_report_rpackages <- function (secrets_csv = NULL, 
 non_r_packages = get_non_r_packages(),
@@ -19,6 +19,7 @@ non_r_packages = get_non_r_packages(),
              package = "kwb.pkgstatus")) {
   
   
+  fs::dir_create(export_dir)
 
   rmarkdown::render(input = input_rmd, 
                     output_format = "html_document", 
@@ -28,5 +29,5 @@ non_r_packages = get_non_r_packages(),
                                   non_r_packages = non_r_packages))
   
   
-  fs::path_abs(export_dir)
+  fs::path_real(export_dir)
 }
