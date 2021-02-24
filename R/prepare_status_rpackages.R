@@ -5,7 +5,7 @@
 #' @keywords internal
 #'
 check_all_tokens_set <- function() {
-  token_names <- c("APPYEYOR_TOKEN", 
+  token_names <- c("APPVEYOR_TOKEN", 
                    "CODECOV_TOKEN", 
                    "GITHUB_TOKEN", 
                    "GITLAB_TOKEN",
