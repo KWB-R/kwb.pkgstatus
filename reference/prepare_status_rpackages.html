@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.pkgstatus</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -144,14 +144,20 @@
     <p>prepare_status_rpackages</p>
     </div>
 
-    <pre class="usage"><span class='fu'>prepare_status_rpackages</span><span class='op'>(</span><span class='va'>secrets_csv</span>, non_r_packages <span class='op'>=</span> <span class='fu'><a href='get_non_r_packages.html'>get_non_r_packages</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>prepare_status_rpackages</span><span class='op'>(</span>
+  secrets_csv <span class='op'>=</span> <span class='cn'>NULL</span>,
+  non_r_packages <span class='op'>=</span> <span class='fu'><a href='get_non_r_packages.html'>get_non_r_packages</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>secrets_csv</th>
-      <td><p>path to "secrets.csv" file</p></td>
+      <td><p>path to "secrets.csv" file, if "NULL" Sys.env variables 
+for the following services are used/need to be defined: APPVEYOR_TOKEN, 
+GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
+(default: NULL)</p></td>
     </tr>
     <tr>
       <th>non_r_packages</th>

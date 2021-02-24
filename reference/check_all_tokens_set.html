@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>check_gitlab_backup — check_gitlab_backup • kwb.pkgstatus</title>
+<title>Helper function: check if tokens are set — check_all_tokens_set • kwb.pkgstatus</title>
 
 
 <!-- jquery -->
@@ -45,8 +45,8 @@
 
 
 
-<meta property="og:title" content="check_gitlab_backup — check_gitlab_backup" />
-<meta property="og:description" content="check_gitlab_backup" />
+<meta property="og:title" content="Helper function: check if tokens are set — check_all_tokens_set" />
+<meta property="og:description" content="Helper function: check if tokens are set" />
 
 
 
@@ -135,42 +135,21 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>check_gitlab_backup</h1>
-    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.pkgstatus/blob/master/R/check_gitlab_backup.R'><code>R/check_gitlab_backup.R</code></a></small>
-    <div class="hidden name"><code>check_gitlab_backup.Rd</code></div>
+    <h1>Helper function: check if tokens are set</h1>
+    <small class="dont-index">Source: <a href='https://github.com/KWB-R/kwb.pkgstatus/blob/master/R/prepare_status_rpackages.R'><code>R/prepare_status_rpackages.R</code></a></small>
+    <div class="hidden name"><code>check_all_tokens_set.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>check_gitlab_backup</p>
+    <p>Helper function: check if tokens are set</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check_gitlab_backup</span><span class='op'>(</span>
-  group <span class='op'>=</span> <span class='st'>"KWB-R"</span>,
-  github_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"GITHUB_TOKEN"</span><span class='op'>)</span>,
-  gitlab_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"GITLAB_TOKEN"</span><span class='op'>)</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>check_all_tokens_set</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>group</th>
-      <td><p>username or organisation for Github/Gitlab (default: "KWB-R")</p></td>
-    </tr>
-    <tr>
-      <th>github_token</th>
-      <td><p>github access token (default: Sys.getenv("GITHUB_TOKEN"))</p></td>
-    </tr>
-    <tr>
-      <th>gitlab_token</th>
-      <td><p>gitlab access token (default: Sys.getenv("GITLAB_TOKEN")))</p></td>
-    </tr>
-    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame containing all Github repositoriers that are mirrored in 
-Gitlab (i.e. were at least syncronised within the last 2 hours)</p>
+    <p>TRUE if all tokens are set, FALSE otherwise</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.pkgstatus</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -146,7 +146,7 @@
 
     <pre class="usage"><span class='fu'>get_coverage</span><span class='op'>(</span>
   <span class='va'>repo_full_name</span>,
-  codecov_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"codecov_token"</span><span class='op'>)</span>,
+  codecov_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"CODECOV_TOKEN"</span><span class='op'>)</span>,
   dbg <span class='op'>=</span> <span class='cn'>TRUE</span>
 <span class='op'>)</span></pre>
 
@@ -159,8 +159,8 @@
     </tr>
     <tr>
       <th>codecov_token</th>
-      <td><p>zenodo authentication token (default: 
-getOption("codecov_token")</p></td>
+      <td><p>codecov authentication token (default: 
+Sys.getenv("CODECOV_TOKEN"))</p></td>
     </tr>
     <tr>
       <th>dbg</th>

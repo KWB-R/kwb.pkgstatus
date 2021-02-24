@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.pkgstatus</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -144,7 +144,7 @@
     <p>badge_license</p>
     </div>
 
-    <pre class="usage"><span class='fu'>badge_license</span><span class='op'>(</span><span class='va'>license_keys</span>, github_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>getOption</a></span><span class='op'>(</span><span class='st'>"github_token"</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>badge_license</span><span class='op'>(</span><span class='va'>license_keys</span>, github_token <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span><span class='op'>(</span><span class='st'>"GITHUB_TOKEN"</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -157,7 +157,7 @@
     </tr>
     <tr>
       <th>github_token</th>
-      <td><p>github access token (default: getOption("github_token"))</p></td>
+      <td><p>github access token (default: Sys.getenv("GITHUB_TOKEN"))</p></td>
     </tr>
     </table>
 

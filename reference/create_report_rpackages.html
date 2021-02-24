@@ -78,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">kwb.pkgstatus</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -145,7 +145,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>create_report_rpackages</span><span class='op'>(</span>
-  <span class='va'>secrets_csv</span>,
+  secrets_csv <span class='op'>=</span> <span class='cn'>NULL</span>,
   non_r_packages <span class='op'>=</span> <span class='fu'><a href='get_non_r_packages.html'>get_non_r_packages</a></span><span class='op'>(</span><span class='op'>)</span>,
   export_dir <span class='op'>=</span> <span class='st'>"."</span>,
   input_rmd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span><span class='op'>(</span><span class='st'>"extdata/reports/status_report.Rmd"</span>, package <span class='op'>=</span>
@@ -157,7 +157,10 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>secrets_csv</th>
-      <td><p>path to "secrets.csv" file</p></td>
+      <td><p>path to "secrets.csv" file, if "NULL" Sys.env variables 
+for the following services are used/need to be defined: APPVEYOR_TOKEN, 
+GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
+(default: NULL)</p></td>
     </tr>
     <tr>
       <th>non_r_packages</th>
@@ -177,7 +180,8 @@ package = "kwb.pkgstatus")</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>creates html status report for R packages</p>
+    <p>creates html status report for R packages and returns the absolute 
+path to the export directory</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
