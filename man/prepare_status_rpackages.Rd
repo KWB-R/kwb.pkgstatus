@@ -7,7 +7,10 @@
 prepare_status_rpackages(secrets_csv, non_r_packages = get_non_r_packages())
 }
 \arguments{
-\item{secrets_csv}{path to "secrets.csv" file}
+\item{secrets_csv}{path to "secrets.csv" file, if "NULL" Sys.env variables 
+for the following services are used/need to be defined: APPVEYOR_TOKEN, 
+GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
+(default: NULL)}
 
 \item{non_r_packages}{a character vector with repositories in KWB-R group that
 are not R packages (default: \code{get_non_r_packages})}

@@ -1,13 +1,13 @@
 #' get_gitlab_repos
 #' @param group username or organisation for Gitlab (default: "KWB-R")
-#' @param gitlab_token gitlab access token (default: getOption("gitlab_token"))
+#' @param gitlab_token gitlab access token (default: Sys.getenv("GITLAB_TOKEN"))
 #' @return data.frame with for all repositories of the user/organisation defined 
 #' in parameter group (private repos will only be accessible if the token is 
 #' configured to allow that)
 #' @importFrom jsonlite fromJSON
 #' @export
 get_gitlab_repos <- function(group = "KWB-R", 
-                             gitlab_token = getOption("gitlab_token")) { 
+                             gitlab_token = Sys.getenv("GITLAB_TOKEN")) { 
   endpoint <- sprintf("https://gitlab.com/api/v4/groups/%s?private_token=%s",
                       group,
                       gitlab_token)
@@ -22,14 +22,14 @@ get_gitlab_repos <- function(group = "KWB-R",
 
 #' get_github_repos
 #' @param group username or organisation for Github (default: "KWB-R")
-#' @param github_token github access token (default: getOption("github_token"))
+#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
 #' @return data.frame with for all repositories of the user/organisation defined 
 #' in parameter group (private repos will only be accessible if the token is 
 #' configured to allow that)
 #' @importFrom gh gh
 #' @export
 get_github_repos <- function (group = "KWB-R", 
-                              github_token = getOption("github_token")) {
+                              github_token = Sys.getenv("GITHUB_TOKEN")) {
   
   
   gh_repos <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?per_page=100", 
@@ -94,7 +94,7 @@ badge_codecov <- function(repo_full_names) {
 }
 
 badge_license <- function(license_keys, 
-                          github_token = getOption("github_token")) {
+                          github_token = Sys.getenv("GITHUB_TOKEN")) {
   gh_licenses <- gh::gh(endpoint = "GET /licenses", 
                         .token =  github_token)
   
@@ -176,7 +176,7 @@ badge_travis <- function(repo_full_names) {
 
 
 badge_zenodo <- function(repo_full_names, 
-                         zenodo_token = getOption("zenodo_token")) {
+                         zenodo_token = Sys.getenv("ZENODO_TOKEN")) {
   
   zen_data <- zen_collections(access_token = zenodo_token)
   
@@ -210,7 +210,7 @@ badge_zenodo <- function(repo_full_names,
 
 
 get_coverage <- function(repo_full_name, 
-                         codecov_token = getOption("codecov_token"), 
+                         codecov_token = Sys.getenv("CODECOV_TOKEN"), 
                          dbg = TRUE) {
   
   
@@ -240,7 +240,7 @@ get_coverage <- function(repo_full_name,
 }
 
 get_coverages <- function (repo_full_names, 
-                           codecov_token = getOption("codecov_token"), 
+                           codecov_token = Sys.getenv("CODECOV_TOKEN"), 
                            dbg = TRUE) {
   coverage_percent <- rep(NA, 
                           length = length(repo_full_names))

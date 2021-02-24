@@ -1,5 +1,36 @@
+#' Helper function: check if tokens are set
+#'
+#' @return TRUE if all tokens are set, FALSE otherwise
+#' @importFrom stringr str_length
+#' @internal
+#'
+check_all_tokens_set <- function() {
+  token_names <- c("APPYEYOR_TOKEN", 
+                   "CODECOV_TOKEN", 
+                   "GITHUB_TOKEN", 
+                   "GITLAB_TOKEN",
+                   "ZENODO_TOKEN"
+                   )
+  token_values <- Sys.getenv(token_names)
+  
+  tokens_defined <- stringr::str_length(token_values) > 0
+  
+  if(all(tokens_defined)) {
+    TRUE
+  } else {
+    tokens_undefined <- paste(token_names[!tokens_defined], collapse = ", ")
+    warning(sprintf("The folling tokens were not defined: %s", tokens_undefined))
+    FALSE
+  }
+  
+}
+
+
 #' prepare_status_rpackages
-#' @param secrets_csv path to "secrets.csv" file
+#' @param secrets_csv path to "secrets.csv" file, if "NULL" Sys.env variables 
+#' for the following services are used/need to be defined: APPVEYOR_TOKEN, 
+#' GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
+#' (default: NULL)
 #' @param non_r_packages a character vector with repositories in KWB-R group that
 #' are not R packages (default: \code{get_non_r_packages})
 #' @importFrom dplyr filter_ left_join
@@ -11,16 +42,20 @@ prepare_status_rpackages <- function (secrets_csv,
     non_r_packages = get_non_r_packages()) {
   
   
+  if(!is.null(secrets_csv)) {
   ### Need to check Hadley`s vignette for safely managing access tokens:
   ### https://cran.r-project.org/web/packages/httr/vignettes/secrets.html
   secrets <- read.csv(secrets_csv, stringsAsFactors = FALSE)
   
-  options(zenodo_token = secrets$zenodo_token, 
-          codecov_token  = secrets$codecov_token,
-          github_token = secrets$github_token,
-          appveyor_token =  secrets$appveyor_token,
-          gitlab_token = secrets$gitlab_token)
+  Sys.env(APPVEYOR_TOKEN = secrets$appveyor_token,
+          CODECOV_TOKEN = secrets$codecov_token,
+          GITHUB_TOKEN = secrets$github_token,
+          GITLAB_TOKEN = secrets$gitlab_token,
+          ZENODO_TOKEN = secrets$zenodo_token
+          )
+  }
   
+  stopifnot(check_all_tokens_set())
   
   repo_infos <- kwb.pkgstatus::get_github_repos() %>% 
     dplyr::filter_("!name %in% non_r_packages") 
