@@ -2,7 +2,7 @@
 #'
 #' @return TRUE if all tokens are set, FALSE otherwise
 #' @importFrom stringr str_length
-#' @internal
+#' @keywords internal
 #'
 check_all_tokens_set <- function() {
   token_names <- c("APPYEYOR_TOKEN", 
