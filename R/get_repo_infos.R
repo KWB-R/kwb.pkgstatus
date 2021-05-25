@@ -39,17 +39,17 @@ get_github_repos <- function (group = "KWB-R",
     
     repo_list <- list()
 
-    finished <- FALSE
+    n_repos <- 0L
     
-    while(! finished) {
+    while(n_repos < per_page) {
     
       result <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
 
-      if ((n_repos <- length(result)) > 0L) {
+      n_repos <- length(result)
+      
+      if (n_repos > 0L) {
         repo_list[[length(repo_list) + 1L]] <- result
       }
-      
-      finished <- (n_repos < per_page)
     }
     
     do.call(what = c, args = repo_list)
