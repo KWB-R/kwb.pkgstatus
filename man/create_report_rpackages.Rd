@@ -5,7 +5,7 @@
 \title{Create R packages status report#'}
 \usage{
 create_report_rpackages(
-  secrets_csv,
+  secrets_csv = NULL,
   non_r_packages = get_non_r_packages(),
   export_dir = ".",
   input_rmd = system.file("extdata/reports/status_report.Rmd", package =
@@ -13,7 +13,10 @@ create_report_rpackages(
 )
 }
 \arguments{
-\item{secrets_csv}{path to "secrets.csv" file}
+\item{secrets_csv}{path to "secrets.csv" file, if "NULL" Sys.env variables 
+for the following services are used/need to be defined: APPVEYOR_TOKEN, 
+GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
+(default: NULL)}
 
 \item{non_r_packages}{a character vector with repositories in KWB-R group that
 are not R packages (default: \code{get_non_r_packages})}
@@ -24,7 +27,8 @@ are not R packages (default: \code{get_non_r_packages})}
 package = "kwb.pkgstatus")}
 }
 \value{
-creates html status report for R packages
+creates html status report for R packages and returns the absolute 
+path to the export directory
 }
 \description{
 Create R packages status report#'

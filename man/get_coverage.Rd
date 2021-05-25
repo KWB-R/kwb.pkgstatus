@@ -6,15 +6,15 @@
 \usage{
 get_coverage(
   repo_full_name,
-  codecov_token = getOption("codecov_token"),
+  codecov_token = Sys.getenv("CODECOV_TOKEN"),
   dbg = TRUE
 )
 }
 \arguments{
 \item{repo_full_name}{one combination of username/repo (e.g."KWB-R/kwb.db")}
 
-\item{codecov_token}{zenodo authentication token (default: 
-getOption("codecov_token")}
+\item{codecov_token}{codecov authentication token (default: 
+Sys.getenv("CODECOV_TOKEN"))}
 
 \item{dbg}{debug if TRUE (default: TRUE)}
 }

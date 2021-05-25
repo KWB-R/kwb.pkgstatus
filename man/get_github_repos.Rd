@@ -4,12 +4,12 @@
 \alias{get_github_repos}
 \title{get_github_repos}
 \usage{
-get_github_repos(group = "KWB-R", github_token = getOption("github_token"))
+get_github_repos(group = "KWB-R", github_token = Sys.getenv("GITHUB_TOKEN"))
 }
 \arguments{
 \item{group}{username or organisation for Github (default: "KWB-R")}
 
-\item{github_token}{github access token (default: getOption("github_token"))}
+\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
 }
 \value{
 data.frame with for all repositories of the user/organisation defined 

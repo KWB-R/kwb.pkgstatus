@@ -1,30 +1,41 @@
 Package: kwb.pkgstatus
-Version: 0.1.0
 Title: R package for checking KWB package status
-Description: R package for checking KWB package status (e.g. generating 
-            https://kwb-r.github.io/status).
-Authors@R: c(person("Michael", "Rustler", , "michael.rustler@kompetenz-wasser.de",
-           role = c("aut", "cre"), comment = c(ORCID = "0000-0003-0647-7726")),
-           person("Kompetenzzentrum Wasser Berlin gGmbH (KWB)", role = c("cph")))
+Version: 0.2.0
+Authors@R: 
+    c(person(given = "Michael",
+             family = "Rustler",
+             role = c("aut", "cre"),
+             email = "michael.rustler@kompetenz-wasser.de",
+             comment = c(ORCID = "0000-0003-0647-7726")),
+      person(given = "Kompetenzzentrum Wasser Berlin gGmbH (KWB)",
+             role = "cph"))
+Description: R package for checking KWB package status (e.g.
+    generating https://kwb-r.github.io/status).
 License: MIT + file LICENSE
-Imports:
-  data.table,
-  dplyr,
-  gh,
-  httr,
-  jsonlite,
-  lubridate,
-  magrittr,
-  stringr
-Encoding: UTF-8
-LazyData: true
-ByteCompile: true
 URL: https://github.com/KWB-R/kwb.pkgstatus
 BugReports: https://github.com/KWB-R/kwb.pkgstatus/issues
+Imports:
+    data.table,
+    dplyr,
+    fs,
+    gh,
+    httr,
+    jsonlite,
+    kwb.pkgbuild,
+    lubridate,
+    magrittr,
+    stringr
 Suggests: 
     covr,
     knitr,
     rmarkdown,
-    testthat
-VignetteBuilder: knitr
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Remotes: 
+    github::kwb-r/kwb.pkgbuild@v0.1.7
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
 RoxygenNote: 7.1.1
+Config/testthat/edition: 3
