@@ -31,30 +31,29 @@ get_gitlab_repos <- function(group = "KWB-R",
 get_github_repos <- function (group = "KWB-R", 
                               github_token = Sys.getenv("GITHUB_TOKEN")) {
   
-  
-  
   get_repos <- function(per_page = 100L) {
+  
+    endpoint <- function(group, page, per_page) sprintf(
+      "GET /orgs/%s/repos?page=%d&per_page=%d", group, page, per_page
+    )
     
-    n_results <- per_page
-    page <- 1L
     repo_list <- list()
-    while(n_results == per_page) {
+
+    finished <- FALSE
     
-    repo_list[[page]] <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?page=%d&per_page=%d",
-                              group,
-                              page,
-                              per_page),
-           .token =  github_token)
-    n_results <- length(repo_list[[page]])
-    page <- page + 1L
+    while(! finished) {
+    
+      result <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
+
+      if ((n_repos <- length(result)) > 0L) {
+        repo_list[[length(repo_list) + 1L]] <- result
+      }
+      
+      finished <- (n_repos < per_page)
     }
     
     do.call(what = c, args = repo_list)
-
   }
-  
-
-  
   
   for (repo_ind in seq_along(gh_repos)) {
     
