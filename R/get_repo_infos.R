@@ -54,6 +54,8 @@ get_github_repos <- function (group = "KWB-R",
         # ... append repos to the list all_repos
         all_repos[[length(all_repos) + 1L]] <- repos
         
+        page <- page <- 1L
+        
       } else {
         
         # Set page number to zero to finish the while-loop
