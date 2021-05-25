@@ -55,6 +55,8 @@ get_github_repos <- function (group = "KWB-R",
     do.call(what = c, args = repo_list)
   }
   
+  gh_repos <- get_repos()
+  
   for (repo_ind in seq_along(gh_repos)) {
     
     sel_repo <- gh_repos[[repo_ind]]
