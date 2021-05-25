@@ -53,7 +53,7 @@ get_github_repos <- function (group = "KWB-R",
 
   }
   
-
+  gh_repos <- get_repos()
   
   
   for (repo_ind in seq_along(gh_repos)) {
