@@ -32,9 +32,29 @@ get_github_repos <- function (group = "KWB-R",
                               github_token = Sys.getenv("GITHUB_TOKEN")) {
   
   
-  gh_repos <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?per_page=100", 
-                                        group), 
-                     .token =  github_token)
+  
+  get_repos <- function(per_page = 100L) {
+    
+    n_results <- per_page
+    page <- 1L
+    repo_list <- list()
+    while(n_results == per_page) {
+    
+    repo_list[[page]] <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?page=%d&per_page=%d",
+                              group,
+                              page,
+                              per_page),
+           .token =  github_token)
+    n_results <- length(repo_list[[page]])
+    page <- page + 1L
+    }
+    
+    do.call(what = c, args = repo_list)
+
+  }
+  
+
+  
   
   for (repo_ind in seq_along(gh_repos)) {
     
