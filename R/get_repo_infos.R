@@ -31,30 +31,42 @@ get_gitlab_repos <- function(group = "KWB-R",
 get_github_repos <- function (group = "KWB-R", 
                               github_token = Sys.getenv("GITHUB_TOKEN")) {
   
-  
-  
   get_repos <- function(per_page = 100L) {
+  
+    endpoint <- function(group, page, per_page) sprintf(
+      "GET /orgs/%s/repos?page=%d&per_page=%d", group, page, per_page
+    )
     
-    n_results <- per_page
+    all_repos <- list()
+
+    # Start with the first page
     page <- 1L
-    repo_list <- list()
-    while(n_results == per_page) {
-    
-    repo_list[[page]] <- gh::gh(endpoint = sprintf("GET /orgs/%s/repos?page=%d&per_page=%d",
-                              group,
-                              page,
-                              per_page),
-           .token =  github_token)
-    n_results <- length(repo_list[[page]])
-    page <- page + 1L
+
+    # Read next page while page number is given
+    while(page > 0L) {
+  
+      # Read repos from current page  
+      repos <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
+
+      # If the page contained at least one repo...
+      if (length(repos) > 0L) {
+        
+        # ... append repos to the list all_repos
+        all_repos[[length(all_repos) + 1L]] <- repos
+        
+        page <- page + 1L
+        
+      } else {
+        
+        # Set page number to zero to finish the while-loop
+        page <- 0L
+      }
     }
     
-    do.call(what = c, args = repo_list)
-
+    do.call(what = c, args = all_repos)
   }
   
   gh_repos <- get_repos()
-  
   
   for (repo_ind in seq_along(gh_repos)) {
     
