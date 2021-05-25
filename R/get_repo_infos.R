@@ -37,22 +37,31 @@ get_github_repos <- function (group = "KWB-R",
       "GET /orgs/%s/repos?page=%d&per_page=%d", group, page, per_page
     )
     
-    repo_list <- list()
+    all_repos <- list()
 
-    n_repos <- 0L
-    
-    while(n_repos < per_page) {
-    
-      result <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
+    # Start with the first page
+    page <- 1L
 
-      n_repos <- length(result)
-      
-      if (n_repos > 0L) {
-        repo_list[[length(repo_list) + 1L]] <- result
+    # Read next page while page number is given
+    while(page > 0L) {
+  
+      # Read repos from current page  
+      repos <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
+
+      # If the page contained at least one repo...
+      if (length(repos) > 0L) {
+        
+        # ... append repos to the list all_repos
+        all_repos[[length(all_repos) + 1L]] <- repos
+        
+      } else {
+        
+        # Set page number to zero to finish the while-loop
+        page <- 0L
       }
     }
     
-    do.call(what = c, args = repo_list)
+    do.call(what = c, args = all_repos)
   }
   
   gh_repos <- get_repos()
