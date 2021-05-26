@@ -7,9 +7,10 @@
 #' 
 get_non_r_packages <- function() {
   
-  c("apps", "abluft2", "basar.scripts", "kwb-r.github.io", "fakin", "fakin.blog", "fakin.doc", "fakin.scripts", "FolderRights",
-   "flusshygiene", "HydroServerLite", "GeoSalz", "LIDsensitivity", "pathana", "pFromGrADS", "r-training", 
-   "support", "maxflow", "pubs", "riverPollution", "smart.control", "sema.scripts",	"spur", "status", 
-   "urbanAnnualRunoff", "useR-2019", "wellma.scripts")
+  c("abimo", "apps", "abluft2", "basar.scripts", "dwc.scripts", "kwb-r.github.io", "fakin", 
+    "fakin.blog", "fakin.doc", "fakin.scripts", "FolderRights", "flusshygiene", 
+    "HydroServerLite", "GeoSalz", "pathana", "pFromGrADS", "r-training", 
+   "support", "maxflow", "pubs", "riverPollution", "smart.control", 
+   "sema.scripts",	"spur", "status", "useR-2019", "wellma.scripts")
 
 }

@@ -4,14 +4,14 @@
 \alias{badge_license}
 \title{badge_license}
 \usage{
-badge_license(license_keys, github_token = getOption("github_token"))
+badge_license(license_keys, github_token = Sys.getenv("GITHUB_TOKEN"))
 }
 \arguments{
 \item{license_keys}{one or many valid license keys from c("agpl-3.0", 
 "apache-2.0", "bsd-2-clause", "bsd-3-clause", "epl-2.0", "gpl-2.0", "gpl-3.0",    
 "lgpl-2.1", "lgpl-3.0", "mit", "mpl-2.0", "unlicense")}
 
-\item{github_token}{github access token (default: getOption("github_token"))}
+\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
 }
 \value{
 badge for all provided license keys

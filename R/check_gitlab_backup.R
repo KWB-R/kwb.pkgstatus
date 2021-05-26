@@ -1,8 +1,8 @@
 #' check_gitlab_backup 
 #'
 #' @param group username or organisation for Github/Gitlab (default: "KWB-R")
-#' @param github_token github access token (default: getOption("github_token"))
-#' @param gitlab_token gitlab access token (default: getOption("gitlab_token"))
+#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
+#' @param gitlab_token gitlab access token (default: Sys.getenv("GITLAB_TOKEN")))
 #' @return data.frame containing all Github repositoriers that are mirrored in 
 #' Gitlab (i.e. were at least syncronised within the last 2 hours)
 #' @importFrom magrittr "%>%"
@@ -10,8 +10,8 @@
 #' @importFrom lubridate as_datetime
 #' @export
 check_gitlab_backup <- function(group = "KWB-R",
-                                github_token = getOption("github_token"), 
-                                gitlab_token = getOption("gitlab_token")) {
+                                github_token = Sys.getenv("GITHUB_TOKEN"), 
+                                gitlab_token = Sys.getenv("GITLAB_TOKEN")) {
   
   
   github_repos <- get_github_repos(group, github_token)

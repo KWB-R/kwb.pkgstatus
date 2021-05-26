@@ -4,12 +4,12 @@
 \alias{get_gitlab_repos}
 \title{get_gitlab_repos}
 \usage{
-get_gitlab_repos(group = "KWB-R", gitlab_token = getOption("gitlab_token"))
+get_gitlab_repos(group = "KWB-R", gitlab_token = Sys.getenv("GITLAB_TOKEN"))
 }
 \arguments{
 \item{group}{username or organisation for Gitlab (default: "KWB-R")}
 
-\item{gitlab_token}{gitlab access token (default: getOption("gitlab_token"))}
+\item{gitlab_token}{gitlab access token (default: Sys.getenv("GITLAB_TOKEN"))}
 }
 \value{
 data.frame with for all repositories of the user/organisation defined 

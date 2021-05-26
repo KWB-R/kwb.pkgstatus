@@ -6,7 +6,7 @@
 \usage{
 get_coverages(
   repo_full_names,
-  codecov_token = getOption("codecov_token"),
+  codecov_token = Sys.getenv("CODECOV_TOKEN"),
   dbg = TRUE
 )
 }
@@ -15,7 +15,7 @@ get_coverages(
 c("KWB-R/kwb.utils", "KWB-R/kwb.db"))}
 
 \item{codecov_token}{zenodo authentication token (default: 
-getOption("codecov_token")}
+Sys.getenv("CODECOV_TOKEN")}
 
 \item{dbg}{debug if TRUE (default: TRUE)}
 }

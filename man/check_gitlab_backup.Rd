@@ -6,16 +6,16 @@
 \usage{
 check_gitlab_backup(
   group = "KWB-R",
-  github_token = getOption("github_token"),
-  gitlab_token = getOption("gitlab_token")
+  github_token = Sys.getenv("GITHUB_TOKEN"),
+  gitlab_token = Sys.getenv("GITLAB_TOKEN")
 )
 }
 \arguments{
 \item{group}{username or organisation for Github/Gitlab (default: "KWB-R")}
 
-\item{github_token}{github access token (default: getOption("github_token"))}
+\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
 
-\item{gitlab_token}{gitlab access token (default: getOption("gitlab_token"))}
+\item{gitlab_token}{gitlab access token (default: Sys.getenv("GITLAB_TOKEN")))}
 }
 \value{
 data.frame containing all Github repositoriers that are mirrored in 
