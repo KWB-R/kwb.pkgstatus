@@ -3,14 +3,14 @@
 #' @param license_keys one or many valid license keys from c("agpl-3.0", 
 #' "apache-2.0", "bsd-2-clause", "bsd-3-clause", "epl-2.0", "gpl-2.0", "gpl-3.0",    
 #' "lgpl-2.1", "lgpl-3.0", "mit", "mpl-2.0", "unlicense") 
-#' @param github_token github access token (default: getOption("github_token"))
+#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
 #' @importFrom gh gh
 #' @importFrom data.table rbindlist
 #' @importFrom dplyr left_join select_ rename_
 #' @return badge for all provided license keys
 #' @export
 badge_license <- function(license_keys, 
-                          github_token = getOption("github_token")) {
+                          github_token = Sys.getenv("GITHUB_TOKEN")) {
   gh_licenses <- gh::gh(endpoint = "GET /licenses", 
                         .token =  github_token)
   
