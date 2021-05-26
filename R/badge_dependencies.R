@@ -5,7 +5,7 @@
 badge_dependencies <- function(repo_names) {
   paste0("[![Dependencies_badge](https://kwb-githubdeps.netlify.app/badge/",
          repo_names,
-        ")](https://kwb-githubdeps.netlify.app")
+        ")](https://kwb-githubdeps.netlify.app)")
 }
 
 
