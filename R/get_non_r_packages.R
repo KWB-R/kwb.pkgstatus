@@ -7,9 +7,9 @@
 #' 
 get_non_r_packages <- function() {
   
-  c("abimo", "apps", "abluft2", "basar.scripts", "dependencies", "dwc.scripts", "kwb-r.github.io",  
+  c("abimo", "apps", "abluft2", "basar.scripts", "dwc.scripts", "kwb-r.github.io",  
     "fakin", "fakin.blog", "fakin.doc", "fakin.scripts", "FolderRights", "flusshygiene", 
-    "HydroServerLite", "GeoSalz", "pathana", "pFromGrADS", "r-training", 
+    "HydroServerLite", "GeoSalz", "pathana", "pFromGrADS", "programming", "r-training", 
    "support", "maxflow", "pubs", "riverPollution", "smart.control", 
    "sema.scripts",	"spur", "status", "useR-2019", "wellma.scripts")
 
