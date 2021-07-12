@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">kwb.pkgstatus</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
       </span>
     </div>
 
@@ -92,12 +92,24 @@
   <div class="contents col-md-9">
 
 
-<p>R package for checking KWB package status (e.g. generating <a href="https://kwb-r.github.io/status" class="uri">https://kwb-r.github.io/status</a>)</p>
+<p>R package for checking KWB package status (e.g. generating <a href="https://kwb-r.github.io/status" class="uri">https://kwb-r.github.io/status</a>).</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
+<p>For details on how to install KWB-R packages checkout our <a href="https://kwb-r.github.io/kwb.pkgbuild/articles/install.html">installation tutorial</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#install.packages("remotes", repos = "https://cloud.r-project.org")</span>
+<code class="sourceCode R"><span class="co">### Optionally: specify GitHub Personal Access Token (GITHUB_PAT)</span>
+<span class="co">### See here why this might be important for you:</span>
+<span class="co">### https://kwb-r.github.io/kwb.pkgbuild/articles/install.html#set-your-github_pat</span>
+
+<span class="co"># Sys.setenv(GITHUB_PAT = "mysecret_access_token")</span>
+
+<span class="co"># Install package "remotes" from CRAN</span>
+<span class="kw">if</span> <span class="op">(</span><span class="op">!</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span>, repos <span class="op">=</span> <span class="st">"https://cloud.r-project.org"</span><span class="op">)</span>
+<span class="op">}</span>
+
+<span class="co"># Install KWB package 'kwb.pkgstatus' from GitHub</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"KWB-R/kwb.pkgstatus"</span><span class="op">)</span></code></pre></div>
 </div>
 
@@ -125,6 +137,8 @@
 <ul class="list-unstyled">
 <li>
 <a href="https://mrustl.de">Michael Rustler</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-0647-7726" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>
+<a href="https://www.kompetenz-wasser.de/en/project/fakin/"><img src="https://www.kompetenz-wasser.de/wp-content/uploads/2017/08/forschung-headerbild_fakin-2-1920x449.jpg" height="24"></a> <br><small class="roles"> Funder </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
@@ -134,9 +148,10 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/KWB-R/kwb.pkgstatus/actions?query=workflow%3AR-CMD-check"><img src="https://github.com/KWB-R/kwb.pkgstatus/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://github.com/KWB-R/kwb.pkgstatus/actions?query=workflow%3Apkgdown"><img src="https://github.com/KWB-R/kwb.pkgstatus/workflows/pkgdown/badge.svg" alt="pkgdown"></a></li>
-<li><a href="https://codecov.io/github/KWB-R/kwb.pkgstatus"><img src="https://codecov.io/github/KWB-R/kwb.pkgstatus/branch/master/graphs/badge.svg" alt="codecov"></a></li>
+<li><a href="https://codecov.io/github/KWB-R/kwb.pkgstatus"><img src="https://codecov.io/github/KWB-R/kwb.pkgstatus/branch/main/graphs/badge.svg" alt="codecov"></a></li>
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Project Status"></a></li>
 <li><a href=""><img src="https://www.r-pkg.org/badges/version/kwb.pkgstatus" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://kwb-r.r-universe.dev/"><img src="https://kwb-r.r-universe.dev/badges/kwb.pkgstatus" alt="R-Universe_Status_Badge"></a></li>
 </ul>
 </div>
 </div>
@@ -144,7 +159,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="https://mrustl.de">Michael Rustler</a>.</p>
+  <p>Developed by <a href="https://mrustl.de">Michael Rustler</a>, <a href="https://www.kompetenz-wasser.de/en/project/fakin/"><img src="https://www.kompetenz-wasser.de/wp-content/uploads/2017/08/forschung-headerbild_fakin-2-1920x449.jpg" height="24"></a>.</p>
 </div>
 
 <div class="pkgdown">
