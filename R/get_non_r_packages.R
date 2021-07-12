@@ -11,6 +11,6 @@ get_non_r_packages <- function() {
     "fakin.blog", "fakin.doc", "fakin.scripts", "FolderRights", "flusshygiene", 
     "HydroServerLite", "GeoSalz", "pathana", "pFromGrADS", "r-training", 
    "support", "maxflow", "pubs", "riverPollution", "smart.control", 
-   "sema.scripts",	"spur", "status", "useR-2019", "wellma.scripts")
+   "sema.scripts", "spur", "status", "universe", "useR-2019", "wellma.scripts")
 
 }
