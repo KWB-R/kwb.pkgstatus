@@ -34,7 +34,8 @@ check_all_tokens_set <- function() {
 #' @param non_r_packages a character vector with repositories in KWB-R group that
 #' are not R packages (default: \code{get_non_r_packages})
 #' @importFrom dplyr filter_ left_join
-#' @importFrom kwb.pkgbuild use_badge_ghactions_rcmdcheck use_badge_ghactions_pkgdown
+#' @importFrom kwb.pkgbuild use_badge_ghactions_rcmdcheck use_badge_ghactions_pkgdown 
+#' use_badge_runiverse
 #' @importFrom utils read.csv
 #' @return data.frame with R package status information
 #' @export
@@ -76,6 +77,11 @@ build_doc_release <- as.vector(sapply(repo_infos$name, function(repo) {
 build_doc_dev <- as.vector(sapply(repo_infos$name, function(repo) {
   kwb.pkgbuild::use_badge_ghactions_pkgdown(repo, branch = "dev")
 }))
+
+badge_runiverse <- as.vector(sapply(repo_infos$name, function(repo) {
+  kwb.pkgbuild::use_badge_runiverse(repo)
+}))
+
   
 meta_info <- data.frame(License_Badge = badge_license(repo_infos$license_key), 
 Dependencies = badge_dependencies(repo_infos$name),
@@ -84,6 +90,7 @@ Build_Pkg_Release = build_pkg_release,
 Build_Pkg_Dev = build_pkg_dev,
 Build_Doc_Release = build_doc_release,
 Build_Doc_Dev = build_doc_dev,
+`Released_on_R-Universe` = badge_runiverse,
 ### Avoid issue with CRAN R packages badges
 ### (no problem if PANDOC version >= 2.2.1)
 ### https://github.com/rstudio/rmarkdown/issues/228
