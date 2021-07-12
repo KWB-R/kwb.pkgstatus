@@ -1,3 +1,9 @@
+# [kwb.pkgstatus 0.3.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.0)<small>2021-07-13</small>
+
+* Add `Released_on_R-Universe` (based on `kwb.pkgbuild::use_badge_runiverse()` 
+for linking to [https://kwb-r.r-universe.dev](https://kwb-r.r-universe.dev))
+if package is available 
+
 # [kwb.pkgstatus 0.2.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.2.0)<small>2021-02-23</small>
 
 * Adapt status overview (use Github Actions workflow!)
