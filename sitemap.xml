@@ -1,105 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/articles/index.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/articles/index.html</loc>
   </url>
   <url>
-    <loc>/articles/tutorial.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/articles/tutorial.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_appveyor.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_appveyor.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_codecov.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_codecov.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_cran.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_cran.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_dependencies.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_dependencies.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_gitlab.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_gitlab.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_license.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_license.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_opencpu.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_opencpu.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_travis.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_travis.html</loc>
   </url>
   <url>
-    <loc>/reference/badge_zenodo.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/badge_zenodo.html</loc>
   </url>
   <url>
-    <loc>/reference/check_all_tokens_set.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/check_all_tokens_set.html</loc>
   </url>
   <url>
-    <loc>/reference/check_docu_dev.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/check_docu_dev.html</loc>
   </url>
   <url>
-    <loc>/reference/check_docu_release.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/check_docu_release.html</loc>
   </url>
   <url>
-    <loc>/reference/check_gitlab_backup.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/check_gitlab_backup.html</loc>
   </url>
   <url>
-    <loc>/reference/check_opencpu_deploy.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/check_opencpu_deploy.html</loc>
   </url>
   <url>
-    <loc>/reference/create_report_rpackages.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/create_report_rpackages.html</loc>
   </url>
   <url>
-    <loc>/reference/get_coverage.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/get_coverage.html</loc>
   </url>
   <url>
-    <loc>/reference/get_coverages.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/get_coverages.html</loc>
   </url>
   <url>
-    <loc>/reference/get_github_repos.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/get_github_repos.html</loc>
   </url>
   <url>
-    <loc>/reference/get_gitlab_repos.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/get_gitlab_repos.html</loc>
   </url>
   <url>
-    <loc>/reference/get_non_r_packages.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/get_non_r_packages.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/pipe.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>/reference/prepare_status_rpackages.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/prepare_status_rpackages.html</loc>
   </url>
   <url>
-    <loc>/reference/process_hitter_response.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/process_hitter_response.html</loc>
   </url>
   <url>
-    <loc>/reference/url_success.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/url_success.html</loc>
   </url>
   <url>
-    <loc>/reference/zen_collections.html</loc>
+    <loc>https://kwb-r.github.io/kwb.pkgstatus/reference/zen_collections.html</loc>
   </url>
 </urlset>
