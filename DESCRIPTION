@@ -1,6 +1,6 @@
 Package: kwb.pkgstatus
 Title: R package for checking KWB package status
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: 
     c(person(given = "Michael",
              family = "Rustler",
