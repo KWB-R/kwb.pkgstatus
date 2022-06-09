@@ -1,6 +1,11 @@
 # [kwb.pkgstatus 0.3.3](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.3)<small>2022-05-11</small>
 
 * `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages (i.e. `misa.scripts`)
+
+# [kwb.pkgstatus 0.3.3](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.3)<small>2022-05-11</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
 R packages (i.e. `geosalz.scripts`)
 
 
