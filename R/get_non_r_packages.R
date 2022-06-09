@@ -11,7 +11,7 @@ get_non_r_packages <- function() {
     "kwb-r.github.io", "fakin", "fakin.blog", "fakin.doc", "fakin.scripts", "FolderRights", 
     "flusshygiene", "HydroServerLite", "hydrus1d", "GeoSalz", "geosalz.mf", "geosalz.scripts", 
     "programming", "pathana", "pFromGrADS", "qmra", "r-training", "support", "maxflow",  
-    "misa.scripts", "pubs", "riverPollution", "smart.control", "sema.scripts", "spur.scripts",
-    "status", "universe", "useR-2019", "wellma.scripts")
+    "mbr40.scripts", "misa.scripts", "pubs", "riverPollution", "smart.control", "sema.scripts", 
+    "spur.scripts", "status", "universe", "useR-2019", "wellma.scripts")
 
 }
