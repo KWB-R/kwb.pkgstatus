@@ -1,3 +1,13 @@
+# [kwb.pkgstatus 0.3.5](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.5)<small>2024-03-19</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages 
+
+# [kwb.pkgstatus 0.3.4](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.4)<small>2022-06-09</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages 
+
 # [kwb.pkgstatus 0.3.3](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.3)<small>2022-05-11</small>
 
 * `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
