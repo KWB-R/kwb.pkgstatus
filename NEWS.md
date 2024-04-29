@@ -1,3 +1,41 @@
+# [kwb.pkgstatus 0.3.5](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.5)<small>2024-03-19</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages 
+
+# [kwb.pkgstatus 0.3.4](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.4)<small>2022-06-09</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages 
+
+# [kwb.pkgstatus 0.3.3](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.3)<small>2022-05-11</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages (i.e. `misa.scripts`)
+
+# [kwb.pkgstatus 0.3.3](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.3)<small>2022-05-11</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages (i.e. `geosalz.scripts`)
+
+
+# [kwb.pkgstatus 0.3.2](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.2)<small>2022-05-06</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages (i.e. `qmra`, `spur_scripts`)
+
+# [kwb.pkgstatus 0.3.1](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.1)<small>2022-02-25</small>
+
+* `get_non_r_packages()`: update with new repos on KWB-R organisation which ar not 
+R packages (i.e. `abluft2.scripts`, `geosalz.mf`, `misa.scripts`, `mbr4.0_ml`, 
+`promisces.hhra`)
+
+# [kwb.pkgstatus 0.3.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.3.0)<small>2021-07-13</small>
+
+* Add `Released_on_R-Universe` (based on `kwb.pkgbuild::use_badge_runiverse()` 
+for linking to [https://kwb-r.r-universe.dev](https://kwb-r.r-universe.dev))
+if package is available 
+
 # [kwb.pkgstatus 0.2.0](https://github.com/KWB-R/kwb.pkgstatus/releases/tag/v0.2.0)<small>2021-02-23</small>
 
 * Adapt status overview (use Github Actions workflow!)
