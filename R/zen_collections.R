@@ -18,11 +18,19 @@ process_hitter_response <- function (response)
 #' @export
 #' @seealso \url{https://developers.zenodo.org/#depositions}
 
-zen_collections <- function (n = 1000, 
-                             access_token = Sys.getenv("ZENODO_TOKEN"))  {
-  dir_path <- "https://zenodo.org/api/deposit/depositions"
-  args <- as.list(c("size" = n, "access_token" = access_token))
-  results <- httr::GET(dir_path, query = args)
+zen_collections <- function(n = 1000, access_token = Sys.getenv("ZENODO_TOKEN"))
+{
+  results <- httr::GET(
+    url = compose_url(
+      protocol = "https", 
+      domain_name = "zenodo.org", 
+      path = "api/deposit/depositions"
+    ), 
+    query = list(
+      size = n, 
+      access_token = access_token
+    )
+  )
   request <- httr::content(results)
   process_hitter_response(request)
 }

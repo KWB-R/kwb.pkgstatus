@@ -6,8 +6,8 @@
 \usage{
 check_gitlab_backup(
   group = "KWB-R",
-  github_token = Sys.getenv("GITHUB_TOKEN"),
-  gitlab_token = Sys.getenv("GITLAB_TOKEN")
+  github_token = get_github_token(),
+  gitlab_token = get_gitlab_token()
 )
 }
 \arguments{

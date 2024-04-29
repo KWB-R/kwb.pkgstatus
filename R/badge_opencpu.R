@@ -6,13 +6,24 @@
 #' @return OpenCpu logo in html with path to R package on OpenCpu  
 #' @export
 
-badge_opencpu <- function(url, 
-logo_path = "https://avatars2.githubusercontent.com/u/28672890?s=200&v=4", 
-size = 24) {
+badge_opencpu <- function(
+    url, 
+    logo_path = compose_url(
+      protocol = "https", 
+      subdomain = "avatars2", 
+      domain_name = "githubusercontent.com", 
+      path = "u/28672890", 
+      parameters = list(
+        s = 200, 
+        v = 4
+      )
+    ), 
+    size = 24
+)
+{
+  img_attr <- sprintf(" title='OpenCpu' width='%d' height = '%d'", size, size)
   
-  sprintf("<a href='%s'><img src='%s' title='OpenCpu' width='%d' height = '%d'/></a>", 
-          url, 
-          logo_path, 
-          size, 
-          size)
+  logo_path %>% 
+    html_img(img_attr) %>% 
+    html_a(href = url)
 }

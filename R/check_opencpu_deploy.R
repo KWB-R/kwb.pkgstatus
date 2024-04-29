@@ -8,17 +8,21 @@
 #' repositories that are deployed on OpenCpu (default: https://kwb-r.ocpu.io) 
 #' @export
 
-check_opencpu_deploy <- function(group = "KWB-R") {
+check_opencpu_deploy <- function(group = "KWB-R")
+{
+  ocpu_url <- compose_url(
+    protocol = "https", 
+    subdomain = tolower(group), 
+    domain_name = "ocpu.io"
+  )
   
-  ocpu_url <- sprintf("https://%s.ocpu.io", tolower(group))
-  con <- url(ocpu_url)
-  repo_names <- readLines(con)
-  close(con)
+  repo_names <- readLines(ocpu_url)
+  
   ocpu_urls <- sprintf("%s/%s", ocpu_url, repo_names)
-  rpackages_on_ocpu <- data.frame(name = repo_names,
-             OpenCpu = badge_opencpu(ocpu_urls),
-             stringsAsFactors = FALSE)
-  return(rpackages_on_ocpu)
+  
+  data.frame(
+    name = repo_names,
+    OpenCpu = badge_opencpu(ocpu_urls),
+    stringsAsFactors = FALSE
+  )
 }
-
-

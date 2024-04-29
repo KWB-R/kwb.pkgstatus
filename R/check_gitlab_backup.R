@@ -9,32 +9,37 @@
 #' @importFrom dplyr left_join
 #' @importFrom lubridate as_datetime
 #' @export
-check_gitlab_backup <- function(group = "KWB-R",
-                                github_token = Sys.getenv("GITHUB_TOKEN"), 
-                                gitlab_token = Sys.getenv("GITLAB_TOKEN")) {
+check_gitlab_backup <- function(
+    group = "KWB-R",
+    github_token = get_github_token(), 
+    gitlab_token = get_gitlab_token()
+)
+{
+  github_repos <- get_github_repos(group, github_token) %>% 
+    prefix_names("gh_")
   
-  
-  github_repos <- get_github_repos(group, github_token)
-  gitlab_repos <- get_gitlab_repos(group,gitlab_token)
-  
-  
-  
-  names(github_repos) <- paste0("gh_", names(github_repos))
-  names(gitlab_repos) <- paste0("gl_", names(gitlab_repos))
+  gitlab_repos <- get_gitlab_repos(group,gitlab_token) %>% 
+    prefix_names("gl_")
   
   tmp <- github_repos %>% 
-    dplyr::left_join(y = gitlab_repos, by = c("gh_name" = "gl_name")) 
-  
-  tmp$last_mirrored_hours <- difftime(lubridate::as_datetime(tmp$gh_pushed_at), 
-                                      lubridate::as_datetime(tmp$gl_last_activity_at), 
-                                      units = "hours")
+    dplyr::left_join(
+      y = gitlab_repos, 
+      by = c("gh_name" = "gl_name")
+    )
+
+  tmp$last_mirrored_hours <- difftime(
+    lubridate::as_datetime(tmp$gh_pushed_at), 
+    lubridate::as_datetime(tmp$gl_last_activity_at), 
+    units = "hours"
+  )
   
   is_mirrored <- tmp$last_mirrored_hours <= 2 #h
   
   mirrored_repos <- tmp[is_mirrored, ]
   
-  data.frame(name = mirrored_repos$gh_name,
-             Backup = badge_gitlab(url = mirrored_repos$gl_web_url),
-             stringsAsFactors = FALSE)
-  
+  data.frame(
+    name = mirrored_repos$gh_name,
+    Backup = badge_gitlab(url = mirrored_repos$gl_web_url),
+    stringsAsFactors = FALSE
+  )
 }

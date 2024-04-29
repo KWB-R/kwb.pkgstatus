@@ -4,7 +4,7 @@
 \alias{badge_license}
 \title{badge_license}
 \usage{
-badge_license(license_keys, github_token = Sys.getenv("GITHUB_TOKEN"))
+badge_license(license_keys, github_token = get_github_token())
 }
 \arguments{
 \item{license_keys}{one or many valid license keys from c("agpl-3.0", 

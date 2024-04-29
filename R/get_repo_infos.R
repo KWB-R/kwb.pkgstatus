@@ -11,15 +11,18 @@
 #' @export
 get_gitlab_repos <- function(
     group = "KWB-R", 
-    gitlab_token = Sys.getenv("GITLAB_TOKEN")
-) 
+    gitlab_token = get_gitlab_token()
+)
 { 
-  endpoint <- sprintf(
-    "https://gitlab.com/api/v4/groups/%s?private_token=%s",
-    group,
-    gitlab_token
+  endpoint <- compose_url(
+    protocol = "https", 
+    domain_name = "gitlab.com", 
+    path = paste0(
+      url_path(paste0("api/v4/groups/", group)), 
+      url_parameter_string(private_token = gitlab_token)
+    )
   )
-  
+
   gitlab_group <- jsonlite::fromJSON(endpoint)
   
   gitlab_group$projects
@@ -36,15 +39,14 @@ get_gitlab_repos <- function(
 #' configured to allow that)
 #' @importFrom gh gh
 #' @export
-get_github_repos <- function (
-    group = "KWB-R", 
-    github_token = Sys.getenv("GITHUB_TOKEN")
-) 
+get_github_repos <- function(group = "KWB-R", github_token = get_github_token())
 {
   get_repos <- function(per_page = 100L) {
     
-    endpoint <- function(group, page, per_page) sprintf(
-      "GET /orgs/%s/repos?page=%d&per_page=%d", group, page, per_page
+    endpoint <- function(group, page, per_page) paste0(
+      "GET ", 
+      url_path(sprintf("orgs/%s/repos", group)),
+      url_parameter_string(page = page, per_page = per_page)
     )
     
     all_repos <- list()
@@ -56,7 +58,10 @@ get_github_repos <- function (
     while(page > 0L) {
       
       # Read repos from current page  
-      repos <- gh::gh(endpoint(group, page, per_page), .token =  github_token)
+      repos <- gh::gh(
+        endpoint = endpoint(group, page, per_page), 
+        .token =  github_token
+      )
       
       # If the page contained at least one repo...
       if (length(repos) > 0L) {
@@ -102,17 +107,21 @@ get_github_repos <- function (
       license_link = ifelse(
         is.null(sel_repo$license$spdx_id), 
         NA, 
-        sprintf("https://github.com/%s/blob/master/LICENSE", sel_repo$full_name)
+        compose_url(
+          protocol = "https", 
+          domain_name = "github.com", 
+          path = paste0(sel_repo$full_name, "/blob/master/LICENSE")
+        )
       ),
       stringsAsFactors = FALSE
     )
     
-    tmp$Repository <-  sprintf("[%s](%s)", tmp$name, tmp$url)  
+    tmp$Repository <- named_link(tmp$name, tmp$url)
     
     tmp$License <- ifelse(
       is.na(tmp$license_short),
       NA, 
-      sprintf("[%s](%s)", tmp$license_short, tmp$license_link)
+      named_link(tmp$license_short, tmp$license_link)
     )
     
     if (repo_ind == 1) {
@@ -122,104 +131,71 @@ get_github_repos <- function (
     }
   } 
   
-  res <- res[order(res$name,decreasing = FALSE), ]
-  
-  return(res)
+  res[order(res$name,decreasing = FALSE), ]
 }
 
 # badge_cran -------------------------------------------------------------------
 badge_cran <- function(repo_names)
 {
-  sprintf(
-    "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/%s)](http://www.r-pkg.org/pkg/%s)", 
-    repo_names,
-    repo_names
+  url_formats <- compose_url(
+    protocol = "http", 
+    subdomain = "www", 
+    domain_name = "r-pkg.org", 
+    path = c(
+      "/badges/version/%s", 
+      "/pkg/%s"
+    )
+  )
+  
+  image_link(
+    image_name = "CRAN_Status_Badge", 
+    image_url = sprintf(url_formats[1L], repo_names),
+    link_url = sprintf(url_formats[2L], repo_names)
   )
 }
 
 # badge_codecov ----------------------------------------------------------------
 badge_codecov <- function(repo_full_names)
 {
-  sprintf(
-    "[![codecov](https://codecov.io/github/%s/branch/master/graphs/badge.svg)](https://codecov.io/github/%s)",
-    repo_full_names,
-    repo_full_names
+  url_formats <- compose_url(
+    protocol = "https",
+    domain_name = "codecov.io", 
+    path = c(
+      "/github/%s/branch/master/graphs/badge.svg",
+      "/github/%s"
+    )
   )
   
-  # sprintf("![codecov](https://img.shields.io/codecov/c/github/%s/master.svg", 
-  #           repo_full_names)
+  image_link(
+    image_name = "codecov",
+    image_url = sprintf(url_formats[1L], repo_full_names),
+    link_url = sprintf(url_formats[2L], repo_full_names)
+  )
 }
 
 # badge_license ----------------------------------------------------------------
-badge_license <- function(
-    license_keys, 
-    github_token = Sys.getenv("GITHUB_TOKEN")
-)
+badge_license <- function(license_keys, github_token = get_github_token())
 {
   gh_licenses <- gh::gh(endpoint = "GET /licenses", .token =  github_token)
   
   gh_licenses_df <- data.table::rbindlist(gh_licenses, fill=TRUE)
   
   #### License badges from: https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba
-  license_badges <- data.frame(key = c(
-    "agpl-3.0", 
-    "apache-2.0", 
-    "bsd-2-clause", 
-    "bsd-3-clause", 
-    "epl-2.0",
-    "gpl-2.0",
-    "gpl-3.0",    
-    "lgpl-2.1",
-    "lgpl-3.0", 
-    "mit", 
-    "mpl-2.0", 
-    "unlicense"
-  ),   
-  badge_url = c(
-    "https://img.shields.io/badge/License-AGPL%20v3-blue.svg", 
-    "https://img.shields.io/badge/License-Apache%202.0-blue.svg",
-    "https://img.shields.io/badge/License-BSD%202--Clause-orange.svg",
-    "https://img.shields.io/badge/License-BSD%203--Clause-blue.svg",
-    "",
-    "https://img.shields.io/badge/License-GPL%20v2-blue.svg",
-    "https://img.shields.io/badge/License-GPL%20v3-blue.svg",    
-    "",
-    "https://img.shields.io/badge/License-LGPL%20v3-blue.svg", 
-    "https://img.shields.io/badge/License-MIT-yellow.svg", 
-    "https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg", 
-    "https://img.shields.io/badge/license-Unlicense-blue.svg"
-  ),
-  license_url = c(
-    "https://opensource.org/licenses/AGPL-3.0", 
-    "https://opensource.org/licenses/Apache-2.0", 
-    "https://opensource.org/licenses/BSD-2-Clause", 
-    "https://opensource.org/licenses/BSD-3-Clause", 
-    "https://www.eclipse.org/legal/epl-2.0/",
-    "https://www.gnu.org/licenses/gpl-2.0",
-    "https://www.gnu.org/licenses/gpl-3.0",    
-    "https://www.gnu.org/licenses/lgpl-2.1",
-    "https://www.gnu.org/licenses/lgpl-3.0", 
-    "https://opensource.org/licenses/MIT", 
-    "https://opensource.org/licenses/MPL-2.0", 
-    "http://unlicense.org/"
-  ),
-  stringsAsFactors = FALSE
-  ) 
+  license_badges <- get_license_badge_info()
   
   gh_licenses_df <- dplyr::left_join(gh_licenses_df, license_badges) 
   
-  gh_licenses_df$Badge_License <- sprintf(
-    "[![%s](%s)](%s)", 
-    gh_licenses_df$spdx_id, 
-    gh_licenses_df$badge_url,
-    gh_licenses_df$license_url
+  gh_licenses_df$Badge_License <- image_link(
+    image_name = gh_licenses_df$spdx_id, 
+    image_url = gh_licenses_df$image_url,
+    link_url = gh_licenses_df$license_url
   )
   
   badges <- gh_licenses_df %>%  
     dplyr::select_(~key, ~Badge_License) %>%  
     dplyr::rename_(license_key = ~key)
   
-  res <- dplyr::left_join(
+  result <- dplyr::left_join(
     x = data.frame(
       license_key = license_keys, 
       stringsAsFactors = FALSE
@@ -227,26 +203,45 @@ badge_license <- function(
     y = badges
   )
   
-  return(res$Badge_License)
+  result$Badge_License
 }
 
 # badge_appveyor ---------------------------------------------------------------
 badge_appveyor <- function(repo_full_names)
 {
-  sprintf(
-    "[![Appveyor](https://ci.appveyor.com/api/projects/status/github/%s?branch=master&svg=true)](https://ci.appveyor.com/project/%s/branch/master)", 
-    repo_full_names,
-    gsub(".", "-", repo_full_names, fixed = TRUE)
+  url_formats <- compose_url(
+    protocol = "https", 
+    subdomain = "ci", 
+    domain_name = "appveyor.com", 
+    path = c(
+      "api/projects/status/github/%s?branch=master&svg=true",
+      "project/%s/branch/master"
+    )
+  )
+  
+  image_link(
+    image_name = "Appveyor",
+    image_url = sprintf(url_formats[1L], repo_full_names),
+    link_url = sprintf(url_formats[2L], dot_to_dash(repo_full_names))
   )
 }
 
 # badge_travis -----------------------------------------------------------------
 badge_travis <- function(repo_full_names)
 {
-  sprintf(
-    "[![Travis](https://travis-ci.org/%s.svg?branch=master)](https://travis-ci.org/%s)", 
-    repo_full_names,
-    repo_full_names
+  url_formats <- compose_url(
+    protocol = "https", 
+    domain_name = "travis-ci.org", 
+    path = c(
+      "/%s.svg?branch=master",
+      "/%s"
+    )
+  )
+  
+  image_link(
+    image_name = "Travis",
+    image_url = sprintf(url_formats[1L], repo_full_names),
+    link_url = sprintf(url_formats[2L], repo_full_names)
   )
 }
 
@@ -258,13 +253,17 @@ badge_zenodo <- function(
 {
   zen_data <- zen_collections(access_token = zenodo_token)
   
-  zen_badge <- rep(NA, length = length(repo_full_names))
+  zen_badge <- na_along(repo_full_names)
   
   for (index in seq_along(repo_full_names)) {
     
     doi_exists <- stringr::str_detect(
       string = zen_data$metadata.related_identifiers.identifier, 
-      pattern = sprintf("https://github.com/%s", repo_full_names[index])
+      pattern = compose_url(
+        protocol = "https", 
+        domain_name = "github.com", 
+        path = paste0("/", repo_full_names[index])
+      )
     )
     
     doi_exists[is.na(doi_exists)] <- FALSE
@@ -293,7 +292,7 @@ badge_zenodo <- function(
     }
   }
   
-  return(zen_badge)   
+  zen_badge
 }
 
 # get_coverage -----------------------------------------------------------------
@@ -303,12 +302,14 @@ get_coverage <- function(
     dbg = TRUE
 ) 
 {
-  url <- sprintf("https://codecov.io/api/gh/%s", repo_full_name)
+  url <- compose_url(
+    protocol = "https", 
+    domain_name = "codecov.io", 
+    path = paste0("/api/gh/", repo_full_name)
+  )
   
-  if(dbg) {
-    cat(sprintf("Checking code coverage for %s at %s", repo_full_name, url))
-  }
-  
+  cat_if(dbg, "Checking code coverage for %s at %s", repo_full_name, url)
+
   req <- sprintf("%s?access_token=%s", url, codecov_token)
   
   if(httr::status_code(httr::GET(url = req)) == 200L) {
@@ -326,9 +327,9 @@ get_coverage <- function(
     codecov_coverage <- NA
   }
   
-  if(dbg) cat(sprintf("....%3.1f%%\n", codecov_coverage))
+  cat_if(dbg, "....%3.1f%%\n", codecov_coverage)
   
-  return(codecov_coverage)
+  codecov_coverage
 }
 
 # get_coverages ----------------------------------------------------------------
@@ -338,8 +339,8 @@ get_coverages <- function (
     dbg = TRUE
 )
 {
-  coverage_percent <- rep(NA, length = length(repo_full_names))
-  coverage_url <- rep(NA, length = length(repo_full_names))
+  coverage_percent <- na_along(repo_full_names)
+  coverage_url <- na_along(repo_full_names)
   
   for (index in seq_along(repo_full_names)) {
     coverage_percent[index] <- get_coverage(
@@ -351,13 +352,14 @@ get_coverages <- function (
   
   available_indices <- which(!is.na(coverage_percent))
   
-  coverage_url[available_indices] <- sprintf(
-    "https://codecov.io/gh/%s", 
-    repo_full_names[available_indices]
+  coverage_url[available_indices] <- compose_url(
+    protocol = "https", 
+    domain_name = "codecov.io", 
+    path = paste0("gh/", repo_full_names[available_indices])
   )
   
-  return(data.frame(
+  data.frame(
     Coverage = coverage_percent, 
     Coverage_url = coverage_url
-  ))
+  )
 }

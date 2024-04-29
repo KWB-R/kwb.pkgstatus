@@ -8,8 +8,7 @@ create_report_rpackages(
   secrets_csv = NULL,
   non_r_packages = get_non_r_packages(),
   export_dir = ".",
-  input_rmd = system.file("extdata/reports/status_report.Rmd", package =
-    "kwb.pkgstatus")
+  input_rmd = system.file("extdata/reports/status_report.Rmd", package = "kwb.pkgstatus")
 )
 }
 \arguments{

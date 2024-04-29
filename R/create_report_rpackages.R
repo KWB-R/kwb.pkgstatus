@@ -12,22 +12,27 @@
 #' path to the export directory
 #' @importFrom fs dir_create path_real 
 #' @export
-create_report_rpackages <- function (secrets_csv = NULL, 
-non_r_packages = get_non_r_packages(),
-                                     export_dir = ".", 
-  input_rmd = system.file("extdata/reports/status_report.Rmd", 
-             package = "kwb.pkgstatus")) {
-  
-  
+create_report_rpackages <- function (
+    secrets_csv = NULL, 
+    non_r_packages = get_non_r_packages(),
+    export_dir = ".", 
+    input_rmd = system.file(
+      "extdata/reports/status_report.Rmd", package = "kwb.pkgstatus"
+    )
+) 
+{
   fs::dir_create(export_dir)
+  
+  rmarkdown::render(
+    input = input_rmd, 
+    output_format = "html_document", 
+    output_file = "index.html", 
+    output_dir = export_dir, 
+    params = list(
+      secrets_csv = secrets_csv,
+      non_r_packages = non_r_packages
+    )
+  )
 
-  rmarkdown::render(input = input_rmd, 
-                    output_format = "html_document", 
-                    output_file = "index.html", 
-                    output_dir = export_dir, 
-                    params = list(secrets_csv = secrets_csv,
-                                  non_r_packages = non_r_packages))
-  
-  
   fs::path_real(export_dir)
 }
