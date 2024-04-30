@@ -22,7 +22,7 @@ get_gitlab_repos <- function(
       url_parameter_string(private_token = gitlab_token)
     )
   )
-
+  
   gitlab_group <- jsonlite::fromJSON(endpoint)
   
   gitlab_group$projects
@@ -41,95 +41,104 @@ get_gitlab_repos <- function(
 #' @export
 get_github_repos <- function(group = "KWB-R", github_token = get_github_token())
 {
-  get_repos <- function(per_page = 100L) {
+  #kwb.utils::assignPackageObjects("kwb.pkgstatus");group="kwb-r"
+  result <- group %>% 
+    get_github_repos_impl(github_token = github_token) %>% 
+    lapply(github_repo_object_to_data_row) %>% 
+    do.call(what = rbind)
+  
+  result[order(result[["name"]], decreasing = FALSE), ]
+}
+
+# get_github_repos_impl --------------------------------------------------------
+get_github_repos_impl <- function(
+    group, 
+    github_token = get_github_token()
+)
+{
+  all_repos <- list()
+  
+  # Start with the first page
+  page <- 1L
+  
+  # Read next page while page number is given
+  while (page > 0L) {
     
-    endpoint <- function(group, page, per_page) paste0(
-      "GET ", 
-      url_path(sprintf("orgs/%s/repos", group)),
-      url_parameter_string(page = page, per_page = per_page)
+    # Read repos from current page  
+    repos <- gh::gh(
+      endpoint = github_endpoint(group, page), 
+      .token =  github_token
     )
     
-    all_repos <- list()
-    
-    # Start with the first page
-    page <- 1L
-    
-    # Read next page while page number is given
-    while(page > 0L) {
+    # If the page contained at least one repo...
+    if (length(repos) > 0L) {
       
-      # Read repos from current page  
-      repos <- gh::gh(
-        endpoint = endpoint(group, page, per_page), 
-        .token =  github_token
-      )
+      # ... append repos to the list all_repos
+      all_repos[[length(all_repos) + 1L]] <- repos
       
-      # If the page contained at least one repo...
-      if (length(repos) > 0L) {
-        
-        # ... append repos to the list all_repos
-        all_repos[[length(all_repos) + 1L]] <- repos
-        
-        page <- page + 1L
-        
-      } else {
-        
-        # Set page number to zero to finish the while-loop
-        page <- 0L
-      }
+      page <- page + 1L
+      
+    } else {
+      
+      # Set page number to zero to finish the while-loop
+      page <- 0L
     }
-    
-    do.call(what = c, args = all_repos)
   }
   
-  gh_repos <- get_repos()
+  # Combine all repo objects into one list
+  do.call(c, all_repos)
+}
+
+# github_endpoint --------------------------------------------------------------
+github_endpoint <- function(group, page, per_page = 100L)
+{
+  sprintf(
+    "GET /orgs/%s/repos%s", 
+    group, 
+    url_parameter_string(page = page, per_page = per_page)
+  )
+}
+
+# github_repo_object_to_data_row -----------------------------------------------
+github_repo_object_to_data_row <- function(repo)
+{
+  name <- repo[["name"]]
+  full_name <- repo[["full_name"]]
+  url <- repo[["html_url"]]
   
-  for (repo_ind in seq_along(gh_repos)) {
-    
-    sel_repo <- gh_repos[[repo_ind]]
-    
-    tmp <- data.frame(
-      name = sel_repo$name,
-      full_name = sel_repo$full_name,
-      url = sel_repo$html_url,
-      created_at = sel_repo$created_at, 
-      pushed_at = sel_repo$pushed_at,
-      open_issues = sel_repo$open_issues,
-      license_key = ifelse(
-        is.null(sel_repo$license$key), 
-        NA, 
-        sel_repo$license$key
-      ), 
-      license_short = ifelse(
-        is.null(sel_repo$license$spdx_id), 
-        NA, 
-        sel_repo$license$spdx_id
-      ), 
-      license_link = ifelse(
-        is.null(sel_repo$license$spdx_id), 
-        NA, 
-        compose_url(
-          protocol = "https", 
-          domain_name = "github.com", 
-          path = paste0(sel_repo$full_name, "/blob/master/LICENSE")
-        )
-      ),
-      stringsAsFactors = FALSE
-    )
-    
-    tmp$Repository <- named_link(tmp$name, tmp$url)
-    
-    tmp$License <- ifelse(
-      is.na(tmp$license_short),
-      NA, 
-      named_link(tmp$license_short, tmp$license_link)
-    )
-    
-    if (repo_ind == 1) {
-      res <- tmp
-    } else {
-      res <- rbind(res,tmp)
-    }
-  } 
+  license_key <- na_if_null(repo[["license"]][["key"]])
+  license_short <- na_if_null(repo[["license"]][["spdx_id"]])
   
-  res[order(res$name,decreasing = FALSE), ]
+  license_link <- if (is.na(license_short)) {
+    NA
+  } else {
+    compose_url(
+      protocol = "https", 
+      domain_name = "github.com", 
+      path = paste0(full_name, "/blob/master/LICENSE")
+    )
+  }
+  
+  result <- data.frame(
+    name = name,
+    full_name = full_name,
+    url = url,
+    created_at = repo[["created_at"]], 
+    pushed_at = repo[["pushed_at"]],
+    open_issues = repo[["open_issues"]],
+    license_key = license_key, 
+    license_short = license_short, 
+    license_link = license_link,
+    stringsAsFactors = FALSE
+  )
+  
+  result[["Repository"]] <- named_link(name, url)
+  
+  result[["License"]] <- if (is.na(license_short)) {
+    NA
+  } else {
+    named_link(license_short, license_link)
+  }
+  
+  result
 }

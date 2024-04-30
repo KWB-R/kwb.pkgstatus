@@ -64,6 +64,12 @@ na_along <- function(x)
   rep(NA, length = length(x))
 }
 
+# na_if_null -------------------------------------------------------------------
+na_if_null <- function(x)
+{
+  if (is.null(x)) NA else x
+}
+
 # prefix_names -----------------------------------------------------------------
 prefix_names <- function(x, prefix)
 {
