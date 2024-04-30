@@ -30,10 +30,25 @@ html_a <- function(href, x)
   sprintf("<a href='%s'>%s</a>", href, x)
 }
 
-# html_img ---------------------------------------------------------------------
-html_img <- function(src, img_attr)
+# html_attribute_string --------------------------------------------------------
+html_attribute_string <- function(...)
 {
-  sprintf("<img src='%s'%s/>", src, img_attr)
+  attributes <- list(...)
+  
+  sprintf("%s='%s'", names(attributes), attributes) %>% 
+    paste(collapse = ", ")
+}
+
+# html_img ---------------------------------------------------------------------
+html_img <- function(src, ...)
+{
+  attr_string <- html_attribute_string(...)
+  
+  sprintf(
+    "<img src='%s'%s/>", 
+    src, 
+    ifelse(nzchar(attr_string), paste0(" ", attr_string), "")
+  )
 }
 
 # na_along ---------------------------------------------------------------------

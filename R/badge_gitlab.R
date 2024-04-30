@@ -16,9 +16,7 @@ badge_gitlab <- function(
     size = 24
 )
 {
-  img_attr <- sprintf(" title='Gitlab' width='%d' height = '%d'", size, size)
-  
   logo_path %>% 
-    html_img(img_attr) %>%
+    html_img(title = "Gitlab", width = size, height = size) %>%
     html_a(href = url)
 }

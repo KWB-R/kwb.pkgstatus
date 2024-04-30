@@ -21,9 +21,7 @@ badge_opencpu <- function(
     size = 24
 )
 {
-  img_attr <- sprintf(" title='OpenCpu' width='%d' height = '%d'", size, size)
-  
   logo_path %>% 
-    html_img(img_attr) %>% 
+    html_img(title = "OpenCpu", width = size, height = size) %>% 
     html_a(href = url)
 }
