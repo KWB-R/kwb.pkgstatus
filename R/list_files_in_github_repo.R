@@ -7,7 +7,8 @@ list_files_in_github_repo <- function(
     columns = c("isdir", "name", "path", "download_url")
 )
 {
-  #owner="kwb-r";repo="kwb.utils";
+  #kwb.utils::assignPackageObjects("kwb.pkgstatus")
+  #owner="kwb-r";repo="kwb.utils";path=""
   
   url <- compose_url(
     protocol = "https", 
@@ -16,14 +17,21 @@ list_files_in_github_repo <- function(
     path = sprintf("repos/%s/%s/contents/%s", owner, repo, path)
   )
   
-  response <- httr::GET(url, config = list(
-    Authorization = paste("Bearer", get_github_token()))
+  response <- http_get_or_stop(
+    url, 
+    config = httr::add_headers(
+      Authorization = paste("Bearer", get_github_token())
+    )
   )
   
   contents <- httr::content(response)
   
   file_info <- lapply(contents, function(x) {
-    as.data.frame(x[setdiff(names(x), c("_links", "download_url"))])
+    #x <- contents[[1L]]
+    x_without_links <- x[setdiff(names(x), "_links")]
+    is_null <- sapply(x_without_links, is.null)
+    x_without_links[is_null] <- as.list(rep(NA, sum(is_null)))
+    as.data.frame(x_without_links)
   }) %>% 
     do.call(what = rbind)
   
