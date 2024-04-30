@@ -6,7 +6,7 @@
 #' @export
 badge_appveyor <- function(repo_full_names)
 {
-  to_full_url <- function(path, parameters = list()) {
+  to_url <- function(path, parameters) {
     compose_url(
       protocol = "https", 
       subdomain = "ci", 
@@ -18,15 +18,13 @@ badge_appveyor <- function(repo_full_names)
   
   image_link(
     image_name = "Appveyor", 
-    image_url = to_full_url(
+    image_url = to_url(
       path = sprintf("api/projects/status/github/%s", repo_full_names), 
-      parameters = list(
-        branch = "master", 
-        svg = "true"
-      )
+      parameters = list(branch = "master", svg = "true")
     ),
-    link_url = to_full_url(
-      path = sprintf("project/%s/branch/master", dot_to_dash(repo_full_names))
+    link_url = to_url(
+      path = sprintf("project/%s/branch/master", dot_to_dash(repo_full_names)),
+      parameters = list()
     )
   )
 }
@@ -39,7 +37,7 @@ badge_appveyor <- function(repo_full_names)
 #' @export
 badge_travis <- function(repo_full_names)
 {
-  to_full_url <- function(path, parameters = list()) {
+  to_url <- function(path, parameters) {
     compose_url(
       protocol = "https", 
       domain_name = "travis-ci.org",
@@ -50,12 +48,13 @@ badge_travis <- function(repo_full_names)
   
   image_link(
     image_name = "Travis", 
-    image_url = to_full_url(
-      path = sprintf("%s.svg", repo_full_names), 
+    image_url = to_url(
+      path = sprintf("%s.svg", repo_full_names),
       parameters = list(branch = "master")
     ),
-    link_url = to_full_url(
-      path = repo_full_names
+    link_url = to_url(
+      path = repo_full_names,
+      parameters = list()
     )
   )
 }

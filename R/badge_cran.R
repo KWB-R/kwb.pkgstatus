@@ -5,7 +5,7 @@
 #' @export
 badge_cran <- function(repo_names)
 {
-  to_full_url <- function(path) {
+  to_url <- function(path) {
     compose_url(
       protocol = "http", 
       subdomain = "www", 
@@ -16,7 +16,7 @@ badge_cran <- function(repo_names)
   
   image_link(
     image_name = "CRAN_Status_Badge", 
-    image_url = to_full_url("badges/version"),
-    link_url = to_full_url("pkg")
+    image_url = to_url("badges/version"),
+    link_url = to_url("pkg")
   )
 }

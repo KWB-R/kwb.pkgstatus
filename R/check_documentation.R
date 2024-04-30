@@ -3,7 +3,6 @@
 #' @param url url of documentation website
 #' @importFrom httr status_code GET
 #' @return TRUE in case HTTP status code is 200, if not: FALSE
-
 url_success <- function(url)
 {
   identical(httr::status_code(x = httr::GET(url)), 200L)
@@ -40,13 +39,10 @@ check_docu_impl <- function(repo_names, url, path_format)
     
     url <- sprintf(path_format, url, repo)
     
-    docu_available <- url_success(url = url)
-    
-    if(docu_available) { 
-      sprintf("[X](%s)", url)
-    } else {
-      ""
+    if (!url_success(url = url)) {
+      return("")
     }
     
+    named_link("X", url)
   })
 }

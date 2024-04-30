@@ -5,7 +5,7 @@
 #' @export
 badge_dependencies <- function(repo_names)
 {
-  to_full_url <- function(path = "") {
+  to_url <- function(path) {
     compose_url(
       protocol = "https", 
       subdomain = "kwb-githubdeps", 
@@ -16,7 +16,7 @@ badge_dependencies <- function(repo_names)
   
   image_link(
     image_name = "Dependencies_badge", 
-    image_url = to_full_url(paste0("badge/", repo_names)),
-    link_url = to_full_url()
+    image_url = to_url(paste0("badge/", repo_names)),
+    link_url = to_url("")
   )
 }
