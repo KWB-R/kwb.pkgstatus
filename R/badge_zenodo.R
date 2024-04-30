@@ -1,4 +1,5 @@
 #' badge_zenodo
+#' 
 #' @param repo_full_names vector with combination of username/repo (e.g.
 #' c("KWB-R/kwb.utils", "KWB-R/kwb.db"))
 #' @param zenodo_token zenodo authentication token (default: 
@@ -13,7 +14,7 @@ badge_zenodo <- function(
 {
   zen_data <- zen_collections(access_token = zenodo_token)
   
-  zen_badge <- na_along(repo_full_names)
+  result <- na_along(repo_full_names)
   
   for (index in seq_along(repo_full_names)) {
     
@@ -28,33 +29,36 @@ badge_zenodo <- function(
     
     doi_exists[is.na(doi_exists)] <- FALSE
     
-    if (sum(doi_exists) == 1L) {
+    n_existing <- sum(doi_exists)
+    
+    if (n_existing == 1L) {
       
-      zen_badge[index] <- image_link(
+      result[index] <- image_link(
         image_name = "DOI", 
         image_url = zen_data$links.badge[doi_exists], 
         link_url = zen_data$doi_url[doi_exists]
       )
       
-    } else if (sum(doi_exists) > 1L) {
+    } else if (n_existing > 1L) {
       
-      warn_msg <- sprintf(
-        "Multiple entries found for repo '%s':\n%s",
-        repo_full_names[index], 
+      warning(
+        sprintf(
+          "Multiple entries found for repo '%s':\n",
+          repo_full_names[index]
+        ), 
         paste(
           zen_data$metadata.related_identifiers.identifier[doi_exists],
           collapse = "\n"
         )
       )
       
-      warning(warn_msg)
-      zen_badge[index] <- "Multiple badges found!"
+      result[index] <- "Multiple badges found!"
       
     } else {
       
-      zen_badge[index] <- NA
+      result[index] <- NA
     }
   }
   
-  zen_badge
+  result
 }
