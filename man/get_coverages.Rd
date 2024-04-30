@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_coverages.R
 \name{get_coverages}
 \alias{get_coverages}
-\title{get_coverage}
+\title{get_coverages}
 \usage{
 get_coverages(
   repo_full_names,
@@ -24,5 +24,5 @@ data.frame with coverage percent and url for all provided
 repo_full_names
 }
 \description{
-get_coverage
+get_coverages
 }

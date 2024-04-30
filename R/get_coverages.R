@@ -1,4 +1,5 @@
 #' get_coverage
+#' 
 #' @param repo_full_name one combination of username/repo (e.g."KWB-R/kwb.db")
 #' @param codecov_token  codecov authentication token (default: 
 #' Sys.getenv("CODECOV_TOKEN"))
@@ -21,11 +22,11 @@ get_coverage <- function(
   
   req <- paste0(url, url_parameter_string(access_token = codecov_token))
   
-  if (httr::status_code(httr::GET(url = req)) == 200L) {
+  if (url_success(req)) {
     
     codecov_data <- jsonlite::fromJSON(req)
     
-    if(!is.null(codecov_data$commit$totals$c)) {
+    if (!is.null(codecov_data$commit$totals$c)) {
       
       codecov_coverage <- round(
         as.numeric(codecov_data$commit$totals$c),
@@ -47,7 +48,8 @@ get_coverage <- function(
   codecov_coverage
 }
 
-#' get_coverage
+#' get_coverages
+#' 
 #' @param repo_full_names vector with combination of username/repo (e.g.
 #' c("KWB-R/kwb.utils", "KWB-R/kwb.db"))
 #' @param codecov_token  zenodo authentication token (default: 
@@ -78,7 +80,7 @@ get_coverages <- function(
   coverage_url[available_indices] <- compose_url(
     protocol = "https", 
     domain_name = "codecov.io", 
-    path = sprintf("gh/%s", repo_full_names[available_indices])
+    path = paste0("gh/", repo_full_names[available_indices])
   )
   
   data.frame(
