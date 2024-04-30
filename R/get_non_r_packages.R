@@ -5,8 +5,8 @@
 #' @examples
 #' get_non_r_packages()
 #' 
-get_non_r_packages <- function() {
-  
+get_non_r_packages <- function()
+{
   c(
     "abimo", 
     "abimo.scripts", 
