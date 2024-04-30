@@ -7,7 +7,8 @@
 get_names_of_r_packages_on_github(
   group = "kwb-r",
   public = TRUE,
-  private = TRUE
+  private = TRUE,
+  dbg = TRUE
 )
 }
 \arguments{
@@ -18,6 +19,8 @@ considered. Default: \code{TRUE}}
 
 \item{private}{logical indicating whether public repositories are to be
 considered. Default: \code{TRUE}}
+
+\item{dbg}{logical indicating whether or not to show debug messages}
 }
 \value{
 vector of character representing the names of the \code{public} 

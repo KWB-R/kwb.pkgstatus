@@ -7,16 +7,17 @@
 #'   considered. Default: \code{TRUE}
 #' @param private logical indicating whether public repositories are to be
 #'   considered. Default: \code{TRUE}
+#' @param dbg logical indicating whether or not to show debug messages
 #' @returns vector of character representing the names of the \code{public} 
 #'   and/or \code{private} repositories (as requested), owned by the 
 #'   organisation \code{groupt} on GitHub
 #' @export
 get_names_of_r_packages_on_github <- function(
-    group = "kwb-r", public = TRUE, private = TRUE
+    group = "kwb-r", public = TRUE, private = TRUE, dbg = TRUE
 )
 {
   # Get info on all repositories owned by group
-  all_repos <- get_github_repos_impl(group = group)
+  all_repos <- get_github_repos_impl(group = group, dbg = dbg)
   
   # Is a repository private (or public)?
   is_private <- sapply(all_repos, `[[`, "private")
