@@ -1,4 +1,5 @@
-#' check_opencpu_deploy: get all Github repos that are deployed on OpenCpu 
+#' Get all Github repos that are deployed on OpenCpu 
+#' 
 #' @description Direct deployment of R packages (including vignette build) by 
 #' using webhooks as described in OpenCpu blog post 
 #' (https://www.opencpu.org/posts/opencpu-release-1-4-5/) and online help 
@@ -10,19 +11,17 @@
 
 check_opencpu_deploy <- function(group = "KWB-R")
 {
-  ocpu_url <- compose_url(
+  url <- compose_url(
     protocol = "https", 
     subdomain = tolower(group), 
     domain_name = "ocpu.io"
   )
   
-  repo_names <- readLines(ocpu_url)
-  
-  ocpu_urls <- sprintf("%s/%s", ocpu_url, repo_names)
+  repo_names <- readLines(url)
   
   data.frame(
     name = repo_names,
-    OpenCpu = badge_opencpu(ocpu_urls),
+    OpenCpu = badge_opencpu(sprintf("%s/%s", url, repo_names)),
     stringsAsFactors = FALSE
   )
 }
