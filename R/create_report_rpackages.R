@@ -1,4 +1,5 @@
-#' Create R packages status report#'
+#' Create R packages status report
+#'
 #' @param secrets_csv path to "secrets.csv" file, if "NULL" Sys.env variables 
 #' for the following services are used/need to be defined: APPVEYOR_TOKEN, 
 #' GITHUB_TOKEN, GITLAB_TOKEN, CODECOV_TOKEN, ZENODO_TOKEN, 
