@@ -53,7 +53,9 @@ get_github_repos <- function(group = "KWB-R", github_token = get_github_token())
 # get_github_repos_impl --------------------------------------------------------
 get_github_repos_impl <- function(
     group, 
-    github_token = get_github_token()
+    github_token = get_github_token(),
+    per_page = 100L,
+    dbg = TRUE
 )
 {
   all_repos <- list()
@@ -64,9 +66,16 @@ get_github_repos_impl <- function(
   # Read next page while page number is given
   while (page > 0L) {
     
+    cat_if(
+      dbg, 
+      "Reading page %d of %d GitHub repos per page\n", 
+      page, 
+      per_page
+    )
+    
     # Read repos from current page  
     repos <- gh::gh(
-      endpoint = github_endpoint(group, page), 
+      endpoint = github_endpoint(group, page, per_page), 
       .token =  github_token
     )
     
