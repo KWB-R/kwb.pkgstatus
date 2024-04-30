@@ -15,27 +15,21 @@ check_gitlab_backup <- function(
     gitlab_token = get_gitlab_token()
 )
 {
-  github_repos <- get_github_repos(group, github_token) %>% 
-    prefix_names("gh_")
-  
-  gitlab_repos <- get_gitlab_repos(group,gitlab_token) %>% 
-    prefix_names("gl_")
-  
-  tmp <- github_repos %>% 
-    dplyr::left_join(
-      y = gitlab_repos, 
-      by = c("gh_name" = "gl_name")
-    )
+  git_repos <- dplyr::left_join(
+    x = prefix_names(get_github_repos(group, github_token), "gh_"),
+    y = prefix_names(get_gitlab_repos(group, gitlab_token), "gl_"), 
+    by = c("gh_name" = "gl_name")
+  )
 
-  tmp$last_mirrored_hours <- difftime(
-    lubridate::as_datetime(tmp$gh_pushed_at), 
-    lubridate::as_datetime(tmp$gl_last_activity_at), 
+  git_repos$last_mirrored_hours <- difftime(
+    lubridate::as_datetime(git_repos$gh_pushed_at), 
+    lubridate::as_datetime(git_repos$gl_last_activity_at), 
     units = "hours"
   )
   
-  is_mirrored <- tmp$last_mirrored_hours <= 2 #h
+  is_mirrored <- git_repos$last_mirrored_hours <= 2 #h
   
-  mirrored_repos <- tmp[is_mirrored, ]
+  mirrored_repos <- git_repos[is_mirrored, ]
   
   data.frame(
     name = mirrored_repos$gh_name,
