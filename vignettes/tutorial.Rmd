@@ -75,3 +75,11 @@ kwb.pkgstatus::create_report_rpackages(secrets_csv,
 
 ```
 
+# 3 What repositories represent (public) R Packages?
+
+```{r}
+kwb.pkgstatus::get_names_of_r_packages_on_github(
+  group = "kwb-r", 
+  private = FALSE
+)
+```
