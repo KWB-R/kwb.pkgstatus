@@ -13,15 +13,9 @@ compose_url <- function(
       paste0(subdomain, ".")
     }, 
     domain_name, 
-    url_path(path),
+    ifelse(path == "", "", paste0("/", gsub("^/+", "", path))),
     do.call(url_parameter_string, parameters)
   )
-}
-
-# url_path ---------------------------------------------------------------------
-url_path <- function(path)
-{
-  paste0(ifelse(path == "", "", "/"), gsub("^/+", "", path))
 }
 
 # compose_url_appveyor ---------------------------------------------------------
