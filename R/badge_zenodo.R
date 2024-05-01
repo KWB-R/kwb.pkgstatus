@@ -20,9 +20,7 @@ badge_zenodo <- function(
     
     doi_exists <- stringr::str_detect(
       string = zen_data$metadata.related_identifiers.identifier , 
-      pattern = compose_url(
-        protocol = "https", 
-        domain_name = "github.com", 
+      pattern = compose_url_github(
         path = repo_full_names[index]
       )
     )

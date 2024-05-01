@@ -39,6 +39,17 @@ compose_url_cran <- function(path)
   )
 }
 
+# compose_url_github -----------------------------------------------------------
+compose_url_github <- function(path, subdomain = NULL)
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = subdomain, 
+    domain_name = "github.com", 
+    path = path
+  )
+}
+
 # compose_url_gitlab -----------------------------------------------------------
 compose_url_gitlab <- function(path, token = NULL)
 {

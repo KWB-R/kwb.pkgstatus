@@ -117,9 +117,7 @@ github_repo_object_to_data_row <- function(repo)
   license_link <- if (is.na(license_short)) {
     NA
   } else {
-    compose_url(
-      protocol = "https", 
-      domain_name = "github.com", 
+    compose_url_github(
       path = paste0(full_name, "/blob/master/LICENSE")
     )
   }

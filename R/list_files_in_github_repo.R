@@ -10,10 +10,8 @@ list_files_in_github_repo <- function(
   #kwb.utils::assignPackageObjects("kwb.pkgstatus")
   #owner="kwb-r";repo="kwb.utils";path=""
   
-  url <- compose_url(
-    protocol = "https", 
+  url <- compose_url_github(
     subdomain = "api", 
-    domain_name = "github.com",
     path = sprintf("repos/%s/%s/contents/%s", owner, repo, path)
   )
   
