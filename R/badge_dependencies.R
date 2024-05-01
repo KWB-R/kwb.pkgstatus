@@ -5,13 +5,9 @@
 #' @export
 badge_dependencies <- function(repo_names)
 {
-  to_url <- function(path) {
-    compose_url_netlify(path)
-  }
-  
   image_link(
     image_name = "Dependencies_badge", 
-    image_url = to_url(paste0("badge/", repo_names)),
-    link_url = to_url("")
+    image_url = compose_url_netlify(paste0("badge/", repo_names)),
+    link_url = compose_url_netlify("")
   )
 }

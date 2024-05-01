@@ -7,15 +7,17 @@
 
 badge_codecov <- function(repo_full_names)
 {
-  to_url <- function(path) {
-    compose_url_codecov(
-      path = paste0("github/", repo_full_names, path)
-    )
+  to_full_path <- function(path) {
+    paste0("github/", repo_full_names, path)
   }
-
+  
   image_link(
     image_name = "codecov", 
-    image_url = to_url("/branch/master/graphs/badge.svg"),
-    link_url = to_url("")
+    image_url = compose_url_codecov(
+      path = to_full_path("/branch/master/graphs/badge.svg")
+    ),
+    link_url = compose_url_codecov(
+      path = to_full_path("")
+    )
   )
 }
