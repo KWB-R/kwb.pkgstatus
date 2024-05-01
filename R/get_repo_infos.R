@@ -3,7 +3,8 @@
 #' get_gitlab_repos
 #' 
 #' @param group username or organisation for Gitlab (default: "KWB-R")
-#' @param gitlab_token gitlab access token (default: Sys.getenv("GITLAB_TOKEN"))
+#' @param gitlab_token gitlab access token.
+#'   Default: kwb.pkgstatus:::get_gitlab_token()
 #' @return data.frame with for all repositories of the user/organisation defined 
 #' in parameter group (private repos will only be accessible if the token is 
 #' configured to allow that)
@@ -29,7 +30,8 @@ get_gitlab_repos <- function(
 #' get_github_repos
 #' 
 #' @param group username or organisation for Github (default: "KWB-R")
-#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
+#' @param github_token github access token.
+#'   Default: kwb.pkgstatus:::get_github_token()
 #' @return data.frame with for all repositories of the user/organisation defined 
 #' in parameter group (private repos will only be accessible if the token is 
 #' configured to allow that)

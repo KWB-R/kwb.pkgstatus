@@ -1,14 +1,14 @@
 #' get_coverage
 #' 
 #' @param repo_full_name one combination of username/repo (e.g."KWB-R/kwb.db")
-#' @param codecov_token  codecov authentication token (default: 
-#' Sys.getenv("CODECOV_TOKEN"))
+#' @param codecov_token codecov authentication token.
+#'   Default: kwb.pkgstatus:::get_token("CODECOV")
 #' @param dbg debug if TRUE (default: TRUE) 
 #' @importFrom httr status_code
 #' @return codecov coverage in percent for provided repo_full_name
 get_coverage <- function(
     repo_full_name, 
-    codecov_token = Sys.getenv("CODECOV_TOKEN"), 
+    codecov_token = get_token("CODECOV"), 
     dbg = TRUE
 )
 {
@@ -48,17 +48,17 @@ get_coverage <- function(
 
 #' get_coverages
 #' 
-#' @param repo_full_names vector with combination of username/repo (e.g.
-#' c("KWB-R/kwb.utils", "KWB-R/kwb.db"))
-#' @param codecov_token  zenodo authentication token (default: 
-#' Sys.getenv("CODECOV_TOKEN")
+#' @param repo_full_names vector with combination of username/repo
+#'   (e.g. c("KWB-R/kwb.utils", "KWB-R/kwb.db"))
+#' @param codecov_token codecov authentication token.
+#'   Default: kwb.pkgstatus:::get_token("CODECOV")
 #' @param dbg debug if TRUE (default: TRUE) 
 #' @return data.frame with coverage percent and url for all provided 
 #' repo_full_names
 #' @export
 get_coverages <- function(
     repo_full_names, 
-    codecov_token = Sys.getenv("CODECOV_TOKEN"), 
+    codecov_token = get_token("CODECOV"), 
     dbg = TRUE
 )
 {

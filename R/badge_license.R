@@ -3,7 +3,8 @@
 #' @param license_keys one or many valid license keys from c("agpl-3.0", 
 #' "apache-2.0", "bsd-2-clause", "bsd-3-clause", "epl-2.0", "gpl-2.0", "gpl-3.0",    
 #' "lgpl-2.1", "lgpl-3.0", "mit", "mpl-2.0", "unlicense") 
-#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
+#' @param github_token github access token. Default: 
+#'   kwb.pkgstatus:::get_github_token()
 #' @importFrom gh gh
 #' @importFrom data.table rbindlist
 #' @importFrom dplyr left_join select_ rename_

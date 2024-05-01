@@ -13,9 +13,11 @@ check_gitlab_backup(
 \arguments{
 \item{group}{username or organisation for Github/Gitlab (default: "KWB-R")}
 
-\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
+\item{github_token}{github access token. 
+Default: kwb.pkgstatus:::get_github_token()}
 
-\item{gitlab_token}{gitlab access token (default: Sys.getenv("GITLAB_TOKEN")))}
+\item{gitlab_token}{gitlab access token. 
+Default: kwb.pkgstatus:::get_gitlab_token()}
 }
 \value{
 data.frame containing all Github repositoriers that are mirrored in 

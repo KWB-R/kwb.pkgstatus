@@ -9,7 +9,8 @@ get_github_repos(group = "KWB-R", github_token = get_github_token())
 \arguments{
 \item{group}{username or organisation for Github (default: "KWB-R")}
 
-\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
+\item{github_token}{github access token.
+Default: kwb.pkgstatus:::get_github_token()}
 }
 \value{
 data.frame with for all repositories of the user/organisation defined 

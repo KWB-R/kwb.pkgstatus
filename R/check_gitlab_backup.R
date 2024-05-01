@@ -1,8 +1,10 @@
 #' check_gitlab_backup 
 #'
 #' @param group username or organisation for Github/Gitlab (default: "KWB-R")
-#' @param github_token github access token (default: Sys.getenv("GITHUB_TOKEN"))
-#' @param gitlab_token gitlab access token (default: Sys.getenv("GITLAB_TOKEN")))
+#' @param github_token github access token. 
+#'   Default: kwb.pkgstatus:::get_github_token()
+#' @param gitlab_token gitlab access token. 
+#'   Default: kwb.pkgstatus:::get_gitlab_token()
 #' @return data.frame containing all Github repositoriers that are mirrored in 
 #' Gitlab (i.e. were at least syncronised within the last 2 hours)
 #' @importFrom magrittr "%>%"

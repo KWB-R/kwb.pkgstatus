@@ -11,7 +11,8 @@ badge_license(license_keys, github_token = get_github_token())
 "apache-2.0", "bsd-2-clause", "bsd-3-clause", "epl-2.0", "gpl-2.0", "gpl-3.0",    
 "lgpl-2.1", "lgpl-3.0", "mit", "mpl-2.0", "unlicense")}
 
-\item{github_token}{github access token (default: Sys.getenv("GITHUB_TOKEN"))}
+\item{github_token}{github access token. Default: 
+kwb.pkgstatus:::get_github_token()}
 }
 \value{
 badge for all provided license keys

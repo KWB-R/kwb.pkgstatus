@@ -15,20 +15,19 @@ dot_to_dash <- function(x)
 # get_github_token -------------------------------------------------------------
 get_github_token <- function()
 {
-  for (name in c("GITHUB_TOKEN", "GITHUB_PAT")) {
-    value <- Sys.getenv(name)
-    if (nzchar(value)) {
-      return(value)
-    }
-  }
-  
-  return("")
+  Sys.getenv("GITHUB_TOKEN", Sys.getenv("GITHUB_PAT"))
 }
 
 # get_gitlab_token -------------------------------------------------------------
 get_gitlab_token <- function()
 {
   Sys.getenv("GITLAB_TOKEN")
+}
+
+# get_token --------------------------------------------------------------
+get_token <- function(prefix)
+{
+  Sys.getenv(paste0(toupper(prefix), "_TOKEN"))
 }
 
 # html_a -----------------------------------------------------------------------

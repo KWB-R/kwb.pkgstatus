@@ -4,14 +4,14 @@
 \alias{badge_zenodo}
 \title{badge_zenodo}
 \usage{
-badge_zenodo(repo_full_names, zenodo_token = Sys.getenv("ZENODO_TOKEN"))
+badge_zenodo(repo_full_names, zenodo_token = get_token("ZENODO"))
 }
 \arguments{
 \item{repo_full_names}{vector with combination of username/repo (e.g.
 c("KWB-R/kwb.utils", "KWB-R/kwb.db"))}
 
-\item{zenodo_token}{zenodo authentication token (default: 
-Sys.getenv("ZENODO_TOKEN"))}
+\item{zenodo_token}{zenodo authentication token. 
+Default: kwb.pkgstatus:::get_token("ZENODO")}
 }
 \value{
 zenodo badges for provided repo_full_names

@@ -12,13 +12,14 @@ process_hitter_response <- function (response)
 
 #' Zenodo: get available collections
 #' @param n number of zenodo entries ("size") to return per API call (default: 1000)
-#' @param access_token Zenodo access token (default: Sys.getenv("ZENODO_TOKEN"))
+#' @param access_token Zenodo access token.
+#'   Default: kwb.pkgstatus:::get_token("ZENODO")
 #' @importFrom httr content GET
 #' @return a tibble of available Zenodo data 
 #' @export
 #' @seealso \url{https://developers.zenodo.org/#depositions}
 
-zen_collections <- function(n = 1000, access_token = Sys.getenv("ZENODO_TOKEN"))
+zen_collections <- function(n = 1000, access_token = get_token("ZENODO"))
 {
   results <- http_get_or_stop(
     url = compose_url_zenodo(

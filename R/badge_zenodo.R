@@ -2,14 +2,14 @@
 #' 
 #' @param repo_full_names vector with combination of username/repo (e.g.
 #' c("KWB-R/kwb.utils", "KWB-R/kwb.db"))
-#' @param zenodo_token zenodo authentication token (default: 
-#' Sys.getenv("ZENODO_TOKEN")) 
+#' @param zenodo_token zenodo authentication token. 
+#'   Default: kwb.pkgstatus:::get_token("ZENODO") 
 #' @importFrom stringr str_detect
 #' @return zenodo badges for provided repo_full_names  
 #' @export
 badge_zenodo <- function(
     repo_full_names, 
-    zenodo_token = Sys.getenv("ZENODO_TOKEN")
+    zenodo_token = get_token("ZENODO")
 )
 {
   zen_data <- zen_collections(access_token = zenodo_token)
