@@ -22,8 +22,10 @@ check_all_tokens_set <- function()
     return(TRUE)
   } 
   
-  tokens_undefined <- paste(token_names[!tokens_defined], collapse = ", ")
-  warning(sprintf("The folling tokens were not defined: %s", tokens_undefined))
+  warning(sprintf(
+    "The following tokens were not defined: %s", 
+    paste(token_names[!tokens_defined], collapse = ", ")
+  ))
   
   FALSE
 }
