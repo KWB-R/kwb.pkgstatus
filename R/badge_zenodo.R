@@ -29,9 +29,9 @@ badge_zenodo <- function(
     
     n_existing <- sum(doi_exists)
     
-    if (n_existing == 1L) {
+    result[index] <- if (n_existing == 1L) {
       
-      result[index] <- image_link(
+      image_link(
         image_name = "DOI", 
         image_url = zen_data$links.badge[doi_exists], 
         link_url = zen_data$doi_url[doi_exists]
@@ -50,11 +50,11 @@ badge_zenodo <- function(
         )
       )
       
-      result[index] <- "Multiple badges found!"
+      "Multiple badges found!"
       
     } else {
       
-      result[index] <- NA
+      NA
     }
   }
   
