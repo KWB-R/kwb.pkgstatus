@@ -134,7 +134,7 @@ compose_url_netlify <- function(path)
 }
 
 # compose_url_ocpu -------------------------------------------------------------
-compose_url_ocpu <- function()
+compose_url_ocpu <- function(group)
 {
   compose_url(
     protocol = "https", 

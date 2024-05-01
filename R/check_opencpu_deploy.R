@@ -11,7 +11,7 @@
 
 check_opencpu_deploy <- function(group = "KWB-R")
 {
-  url <- compose_url_ocpu()
+  url <- compose_url_ocpu(group)
   
   repo_names <- readLines(url)
   
