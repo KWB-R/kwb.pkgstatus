@@ -18,6 +18,12 @@ compose_url <- function(
   )
 }
 
+# url_path ---------------------------------------------------------------------
+url_path <- function(path)
+{
+  paste0(ifelse(path == "", "", "/"), gsub("^/+", "", path))
+}
+
 # compose_url_appveyor ---------------------------------------------------------
 compose_url_appveyor <- function(path, parameters)
 {
