@@ -18,6 +18,18 @@ compose_url <- function(
   )
 }
 
+# compose_url_appveyor ---------------------------------------------------------
+compose_url_appveyor <- function(path, parameters)
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = "ci", 
+    domain_name = "appveyor.com",
+    path = path, 
+    parameters = parameters
+  )
+}
+
 # compose_url_codecov ----------------------------------------------------------
 compose_url_codecov <- function(path)
 {

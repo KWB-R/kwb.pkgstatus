@@ -6,23 +6,13 @@
 #' @export
 badge_appveyor <- function(repo_full_names)
 {
-  to_url <- function(path, parameters) {
-    compose_url(
-      protocol = "https", 
-      subdomain = "ci", 
-      domain_name = "appveyor.com",
-      path = path, 
-      parameters = parameters
-    )
-  }
-  
   image_link(
     image_name = "Appveyor", 
-    image_url = to_url(
+    image_url = compose_url_appveyor(
       path = sprintf("api/projects/status/github/%s", repo_full_names), 
       parameters = list(branch = "master", svg = "true")
     ),
-    link_url = to_url(
+    link_url = compose_url_appveyor(
       path = sprintf("project/%s/branch/master", dot_to_dash(repo_full_names)),
       parameters = list()
     )
