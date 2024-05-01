@@ -6,10 +6,7 @@
 badge_cran <- function(repo_names)
 {
   to_url <- function(path) {
-    compose_url(
-      protocol = "http", 
-      subdomain = "www", 
-      domain_name = "r-pkg.org", 
+    compose_url_cran(
       path = paste0(path, "/", repo_names)
     )
   }

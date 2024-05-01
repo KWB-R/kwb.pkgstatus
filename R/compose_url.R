@@ -28,3 +28,14 @@ compose_url_codecov <- function(path = "", parameters = list())
     parameters = parameters
   )
 }
+
+# compose_url_cran -------------------------------------------------------------
+compose_url_cran <- function(path = "")
+{
+  compose_url(
+    protocol = "http", 
+    subdomain = "www", 
+    domain_name = "r-pkg.org", 
+    path = path
+  )
+}
