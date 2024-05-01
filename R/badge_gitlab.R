@@ -8,9 +8,7 @@
 #' @export
 badge_gitlab <- function(
     url, 
-    logo_path = compose_url(
-      protocol = "https", 
-      domain_name = "gitlab.com", 
+    logo_path = compose_url_gitlab(
       path = "gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png"
     ),
     size = 24

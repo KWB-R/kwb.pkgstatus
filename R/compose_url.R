@@ -39,6 +39,21 @@ compose_url_cran <- function(path)
   )
 }
 
+# compose_url_gitlab -----------------------------------------------------------
+compose_url_gitlab <- function(path, token = NULL)
+{
+  compose_url(
+    protocol = "https", 
+    domain_name = "gitlab.com", 
+    path = path,
+    parameters = if (is.null(token)) {
+      list()
+    } else {
+      list(private_token = token)
+    }
+  )
+}
+
 # compose_url_netlify ----------------------------------------------------------
 compose_url_netlify <- function(path)
 {
@@ -47,5 +62,17 @@ compose_url_netlify <- function(path)
     subdomain = "kwb-githubdeps", 
     domain_name = "netlify.app", 
     path = path
+  )
+}
+
+# compose_url_opencpu ----------------------------------------------------------
+compose_url_opencpu <- function()
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = "avatars2", 
+    domain_name = "githubusercontent.com", 
+    path = "u/28672890", 
+    parameters = list(s = 200, v = 4)
   )
 }

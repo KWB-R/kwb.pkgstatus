@@ -14,15 +14,11 @@ get_gitlab_repos <- function(
     gitlab_token = get_gitlab_token()
 )
 { 
-  endpoint <- compose_url(
-    protocol = "https", 
-    domain_name = "gitlab.com", 
-    path = paste0(
-      url_path(paste0("api/v4/groups/", group)), 
-      url_parameter_string(private_token = gitlab_token)
-    )
+  endpoint <- compose_url_gitlab(
+    path = paste0("api/v4/groups/", group),
+    token = gitlab_token
   )
-  
+
   gitlab_group <- jsonlite::fromJSON(endpoint)
   
   gitlab_group$projects
