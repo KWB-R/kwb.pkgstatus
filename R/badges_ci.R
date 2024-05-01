@@ -27,22 +27,13 @@ badge_appveyor <- function(repo_full_names)
 #' @export
 badge_travis <- function(repo_full_names)
 {
-  to_url <- function(path, parameters) {
-    compose_url(
-      protocol = "https", 
-      domain_name = "travis-ci.org",
-      path = path, 
-      parameters = parameters
-    )
-  }
-  
   image_link(
     image_name = "Travis", 
-    image_url = to_url(
+    image_url = compose_url_travis(
       path = sprintf("%s.svg", repo_full_names),
       parameters = list(branch = "master")
     ),
-    link_url = to_url(
+    link_url = compose_url_travis(
       path = repo_full_names,
       parameters = list()
     )

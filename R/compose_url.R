@@ -99,3 +99,14 @@ compose_url_opencpu <- function()
     parameters = list(s = 200, v = 4)
   )
 }
+
+# compose_url_travis -----------------------------------------------------------
+compose_url_travis <- function(path, parameters)
+{
+  compose_url(
+    protocol = "https", 
+    domain_name = "travis-ci.org",
+    path = path, 
+    parameters = parameters
+  )
+}
