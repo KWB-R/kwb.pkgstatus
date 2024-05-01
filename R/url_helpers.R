@@ -18,6 +18,17 @@ compose_url <- function(
   )
 }
 
+# compose_url_codecov ----------------------------------------------------------
+compose_url_codecov <- function(path = "", parameters = list())
+{
+  compose_url(
+    protocol = "https", 
+    domain_name = "codecov.io", 
+    path = path, 
+    parameters = parameters
+  )
+}
+
 # image_link -------------------------------------------------------------------
 image_link <- function(image_name, image_url, link_url)
 {

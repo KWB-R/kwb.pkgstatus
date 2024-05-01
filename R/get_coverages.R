@@ -12,9 +12,7 @@ get_coverage <- function(
     dbg = TRUE
 )
 {
-  url <- compose_url(
-    protocol = "https", 
-    domain_name = "codecov.io", 
+  url <- compose_url_codecov(
     path = paste0("api/gh/", repo_full_name)
   )
   
@@ -77,9 +75,7 @@ get_coverages <- function(
   
   available_indices <- which(!is.na(coverage_percent))
   
-  coverage_url[available_indices] <- compose_url(
-    protocol = "https", 
-    domain_name = "codecov.io", 
+  coverage_url[available_indices] <- compose_url_codecov(
     path = paste0("gh/", repo_full_names[available_indices])
   )
   
