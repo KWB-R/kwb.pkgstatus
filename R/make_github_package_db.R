@@ -18,11 +18,9 @@ make_github_package_db <- function(group = "kwb-r", dbg = TRUE)
     private = FALSE,
     dbg = dbg
   )
-    
-  description_urls <- compose_url(
-    protocol = "https", 
-    subdomain = "raw", 
-    domain_name = "githubusercontent.com", 
+  
+  description_urls <- compose_url_githubusercontent(
+    subdomain = "raw",
     path = sprintf("%s/%s/master/DESCRIPTION", group, public_r_packages)
   )
   

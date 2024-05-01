@@ -30,6 +30,17 @@ compose_url_appveyor <- function(path, parameters)
   )
 }
 
+# compose_url_badge ------------------------------------------------------------
+compose_url_badge <- function(relative_paths)
+{
+  compose_url(
+    protocol = "https",
+    subdomain = "img", 
+    domain_name = "shields.io", 
+    path = paste0("badge/", relative_paths)
+  )
+}
+
 # compose_url_codecov ----------------------------------------------------------
 compose_url_codecov <- function(path)
 {
@@ -51,6 +62,17 @@ compose_url_cran <- function(path)
   )
 }
 
+# compose_url_eclipse ----------------------------------------------------------
+compose_url_eclipse <- function(path)
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = "www", 
+    domain_name = "eclipse.org", 
+    path = path
+  )
+}
+
 # compose_url_github -----------------------------------------------------------
 compose_url_github <- function(path, subdomain = NULL)
 {
@@ -59,6 +81,18 @@ compose_url_github <- function(path, subdomain = NULL)
     subdomain = subdomain, 
     domain_name = "github.com", 
     path = path
+  )
+}
+
+# compose_url_githubusercontent ------------------------------------------------
+compose_url_githubusercontent <- function(subdomain, path, parameters = list())
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = subdomain, 
+    domain_name = "githubusercontent.com", 
+    path = path,
+    parameters = parameters
   )
 }
 
@@ -74,6 +108,17 @@ compose_url_gitlab <- function(path, token = NULL)
     } else {
       list(private_token = token)
     }
+  )
+}
+
+# compose_url_gnu --------------------------------------------------------------
+compose_url_gnu <- function(path)
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = "www", 
+    domain_name = "gnu.org", 
+    path = path
   )
 }
 
@@ -98,15 +143,13 @@ compose_url_ocpu <- function()
   )
 }
 
-# compose_url_opencpu ----------------------------------------------------------
-compose_url_opencpu <- function()
+# compose_url_opensource -------------------------------------------------------
+compose_url_opensource <- function(path)
 {
   compose_url(
     protocol = "https", 
-    subdomain = "avatars2", 
-    domain_name = "githubusercontent.com", 
-    path = "u/28672890", 
-    parameters = list(s = 200, v = 4)
+    domain_name = "opensource.org", 
+    path = path
   )
 }
 
@@ -118,5 +161,24 @@ compose_url_travis <- function(path, parameters)
     domain_name = "travis-ci.org",
     path = path, 
     parameters = parameters
+  )
+}
+
+# compose_url_unlicense --------------------------------------------------------
+compose_url_unlicense <- function()
+{
+  compose_url(
+    protocol = "http", 
+    domain_name = "unlicense.org"
+  )
+}
+
+# compose_url_zenodo -----------------------------------------------------------
+compose_url_zenodo <- function(path)
+{
+  compose_url(
+    protocol = "https", 
+    domain_name = "zenodo.org", 
+    path = path
   )
 }

@@ -21,9 +21,7 @@ process_hitter_response <- function (response)
 zen_collections <- function(n = 1000, access_token = Sys.getenv("ZENODO_TOKEN"))
 {
   results <- http_get_or_stop(
-    url = compose_url(
-      protocol = "https", 
-      domain_name = "zenodo.org", 
+    url = compose_url_zenodo(
       path = "api/deposit/depositions"
     ), 
     query = list(
