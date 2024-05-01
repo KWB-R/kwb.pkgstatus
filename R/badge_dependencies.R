@@ -6,12 +6,7 @@
 badge_dependencies <- function(repo_names)
 {
   to_url <- function(path) {
-    compose_url(
-      protocol = "https", 
-      subdomain = "kwb-githubdeps", 
-      domain_name = "netlify.app", 
-      path = path
-    )
+    compose_url_netlify(path)
   }
   
   image_link(
