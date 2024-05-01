@@ -4,17 +4,13 @@
 \alias{get_coverage}
 \title{get_coverage}
 \usage{
-get_coverage(
-  repo_full_name,
-  codecov_token = Sys.getenv("CODECOV_TOKEN"),
-  dbg = TRUE
-)
+get_coverage(repo_full_name, codecov_token = get_token("CODECOV"), dbg = TRUE)
 }
 \arguments{
 \item{repo_full_name}{one combination of username/repo (e.g."KWB-R/kwb.db")}
 
-\item{codecov_token}{codecov authentication token (default: 
-Sys.getenv("CODECOV_TOKEN"))}
+\item{codecov_token}{codecov authentication token.
+Default: kwb.pkgstatus:::get_token("CODECOV")}
 
 \item{dbg}{debug if TRUE (default: TRUE)}
 }

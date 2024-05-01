@@ -4,12 +4,13 @@
 \alias{get_gitlab_repos}
 \title{get_gitlab_repos}
 \usage{
-get_gitlab_repos(group = "KWB-R", gitlab_token = Sys.getenv("GITLAB_TOKEN"))
+get_gitlab_repos(group = "KWB-R", gitlab_token = get_gitlab_token())
 }
 \arguments{
 \item{group}{username or organisation for Gitlab (default: "KWB-R")}
 
-\item{gitlab_token}{gitlab access token (default: Sys.getenv("GITLAB_TOKEN"))}
+\item{gitlab_token}{gitlab access token.
+Default: kwb.pkgstatus:::get_gitlab_token()}
 }
 \value{
 data.frame with for all repositories of the user/organisation defined 

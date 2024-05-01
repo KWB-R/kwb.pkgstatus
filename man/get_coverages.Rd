@@ -2,20 +2,20 @@
 % Please edit documentation in R/get_coverages.R
 \name{get_coverages}
 \alias{get_coverages}
-\title{get_coverage}
+\title{get_coverages}
 \usage{
 get_coverages(
   repo_full_names,
-  codecov_token = Sys.getenv("CODECOV_TOKEN"),
+  codecov_token = get_token("CODECOV"),
   dbg = TRUE
 )
 }
 \arguments{
-\item{repo_full_names}{vector with combination of username/repo (e.g.
-c("KWB-R/kwb.utils", "KWB-R/kwb.db"))}
+\item{repo_full_names}{vector with combination of username/repo
+(e.g. c("KWB-R/kwb.utils", "KWB-R/kwb.db"))}
 
-\item{codecov_token}{zenodo authentication token (default: 
-Sys.getenv("CODECOV_TOKEN")}
+\item{codecov_token}{codecov authentication token.
+Default: kwb.pkgstatus:::get_token("CODECOV")}
 
 \item{dbg}{debug if TRUE (default: TRUE)}
 }
@@ -24,5 +24,5 @@ data.frame with coverage percent and url for all provided
 repo_full_names
 }
 \description{
-get_coverage
+get_coverages
 }

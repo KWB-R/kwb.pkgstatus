@@ -2,7 +2,7 @@
 % Please edit documentation in R/check_opencpu_deploy.R
 \name{check_opencpu_deploy}
 \alias{check_opencpu_deploy}
-\title{check_opencpu_deploy: get all Github repos that are deployed on OpenCpu}
+\title{Get all Github repos that are deployed on OpenCpu}
 \usage{
 check_opencpu_deploy(group = "KWB-R")
 }

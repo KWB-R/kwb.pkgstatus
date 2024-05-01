@@ -6,7 +6,8 @@
 \usage{
 badge_opencpu(
   url,
-  logo_path = "https://avatars2.githubusercontent.com/u/28672890?s=200&v=4",
+  logo_path = compose_url_githubusercontent(subdomain = "avatars2", path = "u/28672890",
+    parameters = list(s = 200, v = 4)),
   size = 24
 )
 }

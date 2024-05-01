@@ -2,15 +2,23 @@
 % Please edit documentation in R/get_non_r_packages.R
 \name{get_non_r_packages}
 \alias{get_non_r_packages}
-\title{Helper function: get_non_r_packages}
+\title{Get Names of Repositories that Do not Represent R Packages}
 \usage{
-get_non_r_packages()
+get_non_r_packages(hard_coded = TRUE)
+}
+\arguments{
+\item{hard_coded}{logical indicating whether or not to return the hard-coded
+vector of package names. The default is \code{TRUE}. If \code{hard_coded}
+is \code{FALSE} the names of repositories that are not assumed to represent
+R packages are determined by looking into each repository. This may take a 
+while.}
 }
 \value{
-returns vector with KWB-R repos on Github, which are not R packages
+This function returns a (alphabetically sorted) vector of names of 
+  KWB-R repositories on Github that do not represent R packages
 }
 \description{
-Helper function: get_non_r_packages
+Get Names of Repositories that Do not Represent R Packages
 }
 \examples{
 get_non_r_packages()

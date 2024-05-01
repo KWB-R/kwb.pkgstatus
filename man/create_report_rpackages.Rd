@@ -2,14 +2,13 @@
 % Please edit documentation in R/create_report_rpackages.R
 \name{create_report_rpackages}
 \alias{create_report_rpackages}
-\title{Create R packages status report#'}
+\title{Create R packages status report}
 \usage{
 create_report_rpackages(
   secrets_csv = NULL,
   non_r_packages = get_non_r_packages(),
   export_dir = ".",
-  input_rmd = system.file("extdata/reports/status_report.Rmd", package =
-    "kwb.pkgstatus")
+  input_rmd = system.file("extdata/reports/status_report.Rmd", package = "kwb.pkgstatus")
 )
 }
 \arguments{
@@ -31,5 +30,5 @@ creates html status report for R packages and returns the absolute
 path to the export directory
 }
 \description{
-Create R packages status report#'
+Create R packages status report
 }

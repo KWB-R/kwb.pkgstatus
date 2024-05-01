@@ -75,3 +75,31 @@ kwb.pkgstatus::create_report_rpackages(secrets_csv,
 
 ```
 
+# 3 Analyse public R packages on GitHub
+
+What public repositories on our GitHub account "KWB-R" represent R packages?
+
+```{r}
+public_r_packages <- kwb.pkgstatus::get_names_of_r_packages_on_github(
+  group = "kwb-r", 
+  private = FALSE
+)
+```
+
+How to read all `DESCRIPTION` files of these R packages?
+
+```{r}
+package_db <- kwb.pkgstatus::make_github_package_db(group = "kwb-r")
+```
+
+This package database can now be used in `tools::package_dependencies()` to
+find out about package dependencies:
+
+```{r}
+named_types <- stats::setNames(nm = c("Depends", "Imports", "Suggests"))
+
+lapply(named_types, function(which) {
+  tools::package_dependencies("kwb.utils", db = package_db, which = which)[[1L]]
+})
+```
+
