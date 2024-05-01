@@ -6,7 +6,7 @@
 \usage{
 badge_gitlab(
   url,
-  logo_path = compose_url(protocol = "https", domain_name = "gitlab.com", path =
+  logo_path = compose_url_gitlab(path =
     "gitlab-com/gitlab-artwork/raw/master/logo/logo-square.png"),
   size = 24
 )
