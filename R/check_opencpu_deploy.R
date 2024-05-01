@@ -11,11 +11,7 @@
 
 check_opencpu_deploy <- function(group = "KWB-R")
 {
-  url <- compose_url(
-    protocol = "https", 
-    subdomain = tolower(group), 
-    domain_name = "ocpu.io"
-  )
+  url <- compose_url_ocpu()
   
   repo_names <- readLines(url)
   

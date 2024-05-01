@@ -88,6 +88,16 @@ compose_url_netlify <- function(path)
   )
 }
 
+# compose_url_ocpu -------------------------------------------------------------
+compose_url_ocpu <- function()
+{
+  compose_url(
+    protocol = "https", 
+    subdomain = tolower(group), 
+    domain_name = "ocpu.io"
+  )
+}
+
 # compose_url_opencpu ----------------------------------------------------------
 compose_url_opencpu <- function()
 {
