@@ -13,9 +13,9 @@ get_non_r_packages <- function() {
     "flusshygiene", "HydroServerLite", "hydrus1d", "GeoSalz", "geosalz.mf", 
     "geosalz.scripts", "impetus_scripts", "intruder.io", "lasso.scripts", 
     "Logremoval", "programming", "pathana", "pFromGrADS", "promisces.hhra", 
-    "qmra", "qsimVis", "r-training", "support", "maxflow",  "mbr40.scripts", 
-    "misa.scripts", "pubs", "riverPollution", "smart.control", "sema.scripts", 
-    "sema.projects", "swim-ai", "spur.scripts", "status", "ultimate.scripts", 
-    "useR-2019", "wellma.scripts")
+    "qmra", "qmra-webapp", "qsimVis", "r-training", "support", "maxflow",  
+    "mbr40.scripts", "misa.scripts", "pubs", "riverPollution", "smart.control", 
+    "sema.scripts", "sema.projects", "swim-ai", "spur.scripts", "status", 
+    "ultimate.scripts", "useR-2019", "wellma.scripts")
 }
 
